@@ -49,8 +49,8 @@ textarea {
 }
 
 .section {
-  padding: 92px 0;
-  scroll-margin-top: 82px;
+  padding: 56px 0;
+  scroll-margin-top: 72px;
 }
 
 .section-title {
@@ -128,13 +128,26 @@ textarea {
   background: var(--accent);
 }
 
+/* Slightly smaller pill variant (reduced from section-title size) */
+.pill-lg {
+  font-size: clamp(16px, 2vw, 22px);
+  line-height: 1.03;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+/* Hide the decorative dot for large pills to improve balance */
+.pill-lg .pill-dot {
+  display: none;
+}
+
 @media (max-width: 800px) {
   .container {
     width: min(100% - 28px, 1160px);
   }
 
   .section {
-    padding: 68px 0;
+    padding: 44px 0;
   }
 }
 
@@ -266,6 +279,14 @@ textarea {
   border-radius: 50%;
   background: #c9cafb;
   border: 1px solid #aeb0f2;
+}
+
+/* Highlight used for the About paragraph — does not change text color */
+.about-highlight {
+  background: rgba(91,92,226,0.08);
+  padding: 6px 8px;
+  border-radius: 8px;
+  display: inline-block;
 }
 
 @keyframes marquee {

@@ -131,12 +131,7 @@ const services = [
   }
 ];
 
-const aboutCards = [
-  { icon: GraduationCap, title: "CSE Graduate", text: "Computer Science & Engineering" },
-  { icon: MessageCircle, title: "Problem Solver", text: "Practical solutions" },
-  { icon: Code2, title: "Clean Coder", text: "Readable, maintainable code" },
-  { icon: GraduationCap, title: "Always Learning", text: "Exploring new technologies" }
-];
+// aboutCards removed — personal badge block intentionally omitted
 
 const projects = [
   {
@@ -266,7 +261,7 @@ export default function Portfolio() {
       <section id="home" className="container scroll-mt-20 pt-10 md:pt-14">
           <div className="grid overflow-hidden rounded-[22px] border border-[#e7e9ef] bg-white lg:grid-cols-[0.92fr_1.08fr]">
           <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-14">
-            <div className="pill">
+            <div className="pill pill-lg">
               <span className="pill-dot" />
               Available for freelance work
             </div>
@@ -307,7 +302,7 @@ export default function Portfolio() {
         <div className="container">
           <div className="card grid gap-8 p-7 md:grid-cols-[1.25fr_1fr] md:p-10">
             <div>
-              <div className="pill">About Me</div>
+              <div className="pill pill-lg">About Me</div>
               <h2 className="section-title mt-3">
                 A full-stack developer focused on building practical web solutions.
               </h2>
@@ -324,9 +319,7 @@ export default function Portfolio() {
                 </p>
 
                 <p>
-                  I enjoy taking an idea or requirement and turning it into a working
-                  product — from frontend development and backend logic to database
-                  integration and deployment.
+                  <span className="about-highlight">I enjoy taking an idea or requirement and turning it into a working product from frontend development and backend logic to database integration and deployment.</span>
                 </p>
 
                 <p>
@@ -335,22 +328,14 @@ export default function Portfolio() {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-3 self-center">
-              {aboutCards.map(({ icon: Icon, title, text }) => (
-                <div key={title} className="rounded-xl border border-[#e7e9ef] p-5">
-                  <Icon size={21} className="text-[#5b5ce2]" />
-                  <h3 className="mt-4 text-sm font-bold">{title}</h3>
-                  <p className="mt-2 text-xs leading-5 text-[#667085]">{text}</p>
-                </div>
-              ))}
-            </div>
+            {/* Personal badges removed per user request */}
           </div>
         </div>
       </section>
 
       <section id="services" className="section pt-0">
         <div className="container">
-          <div className="pill">Services</div>
+          <div className="pill pill-lg">Services</div>
           <h2 className="section-title mt-3">What I can help you with</h2>
           <p className="section-subtitle">Focused development services for practical web projects.</p>
 
@@ -370,7 +355,7 @@ export default function Portfolio() {
         <div className="container">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <div className="pill">Projects</div>
+              <div className="pill pill-lg">Projects</div>
               <h2 className="section-title mt-3">Some things I&apos;ve built</h2>
               <p className="section-subtitle">Real projects demonstrating my development work.</p>
             </div>
@@ -439,7 +424,7 @@ export default function Portfolio() {
 
       <section id="experience" className="section pt-0">
         <div className="container">
-          <div className="pill">Experience</div>
+          <div className="pill pill-lg">Experience</div>
           <h2 className="section-title mt-3">Software Development Intern</h2>
 
           <div className="card mt-8 p-6 md:p-8">
@@ -463,8 +448,8 @@ export default function Portfolio() {
 
       <section className="section overflow-hidden pt-0">
         <div className="container">
-          <div className="pill">Tech Stack</div>
-          <h2 className="section-title mt-3">Technologies I work with</h2>
+          <div className="pill pill-lg">Tech Stack</div>
+          <h2 className="section-title mt-3">Technologies I use to build web solutions</h2>
 
           <div className="mt-7">
             {/* Categories rendered vertically, one item per line */}
@@ -485,10 +470,6 @@ export default function Portfolio() {
                 {
                   title: "Databases",
                   items: ["MySQL", "Oracle Database", "SQL", "RDBMS"]
-                },
-                {
-                  title: "Core Concepts",
-                  items: ["OOP", "Data Structures and Algorithms", "Operating Systems", "Computer Networks", "CRUD Operations", "Debugging", "Testing", "Agile Methodologies", "SDLC"]
                 },
                 {
                   title: "Tools & Platforms",
@@ -542,7 +523,7 @@ export default function Portfolio() {
         <div className="container">
           <div className="card grid gap-10 p-7 md:grid-cols-[0.8fr_1.2fr] md:p-10">
             <div>
-              <div className="pill">Contact</div>
+              <div className="pill pill-lg">Contact</div>
               <h2 className="section-title mt-3">Let&apos;s work together.</h2>
               <p className="mt-4 max-w-md text-sm leading-6 text-[#667085]">
                 Have a project in mind? Send me an email and tell me what you&apos;re looking to build.
@@ -614,7 +595,7 @@ export default function Portfolio() {
               <textarea
                 required
                 name="message"
-                placeholder="Tell me about your project..."
+                placeholder="Tell me what's on your mind..."
                 rows={7}
                 className="field resize-none"
                 value={contactMessage}
