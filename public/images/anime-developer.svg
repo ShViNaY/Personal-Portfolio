@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#eef0f5"/>
+      <stop offset="1" stop-color="#f9fafb"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect x="0" y="700" width="1200" height="200" fill="#e5e7ec"/>
+  <rect x="735" y="545" width="330" height="22" rx="11" fill="#c7cbd4"/>
+  <rect x="805" y="565" width="190" height="20" rx="10" fill="#b6bbc6"/>
+  <ellipse cx="635" cy="690" rx="160" ry="38" fill="#c9ccd3"/>
+  <rect x="510" y="560" width="270" height="170" rx="14" fill="#202532"/>
+  <rect x="532" y="582" width="226" height="125" rx="8" fill="#f2f4f7"/>
+  <path d="M560 650 C620 615 650 680 720 625" fill="none" stroke="#777be8" stroke-width="7"/>
+  <circle cx="640" cy="642" r="7" fill="#5b5ce2"/>
+  <!-- shoulders/body -->
+  <path d="M350 720 C360 570 455 505 600 505 C745 505 830 580 845 720 Z" fill="#202532"/>
+  <path d="M425 720 C430 600 490 535 600 535 C710 535 770 600 775 720 Z" fill="#313747"/>
+  <!-- neck -->
+  <path d="M555 520 L555 585 Q600 610 645 585 L645 520 Z" fill="#d69d83"/>
+  <!-- face, slight front angle -->
+  <path d="M480 280 Q600 185 720 280 L700 470 Q650 535 600 545 Q545 535 495 470 Z" fill="#e5ae92"/>
+  <!-- hair -->
+  <path d="M465 335 Q445 215 550 160 Q690 105 760 235 L730 330 L700 285 L675 330 L650 270 L615 320 L575 255 L540 320 L505 285 Z" fill="#1d2330"/>
+  <path d="M700 350 Q740 370 700 410" fill="none" stroke="#b77d6c" stroke-width="7" stroke-linecap="round"/>
+  <!-- eyes -->
+  <ellipse cx="555" cy="365" rx="10" ry="14" fill="#202532"/>
+  <ellipse cx="650" cy="355" rx="10" ry="14" fill="#202532"/>
+  <path d="M575 445 Q610 465 645 440" fill="none" stroke="#9f6257" stroke-width="7" stroke-linecap="round"/>
+  <!-- laptop-side arm -->
+  <path d="M470 585 Q520 600 565 660" fill="none" stroke="#202532" stroke-width="48" stroke-linecap="round"/>
+  <path d="M720 575 Q675 610 650 660" fill="none" stroke="#202532" stroke-width="48" stroke-linecap="round"/>
+  <!-- subtle window -->
+  <rect x="45" y="80" width="310" height="330" rx="18" fill="#ffffff" stroke="#dfe2e8" stroke-width="4"/>
+  <rect x="75" y="115" width="250" height="6" rx="3" fill="#c8ccd5"/>
+  <circle cx="90" cy="100" r="7" fill="#b7b9ef"/>
+  <circle cx="115" cy="100" r="7" fill="#d6d8df"/>
+</svg>
