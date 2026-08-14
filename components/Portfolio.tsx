@@ -432,9 +432,13 @@ export default function Portfolio() {
           <h2 className="section-title mt-3">Software Development Intern</h2>
 
           <div className="card mt-8 p-6 md:p-8">
-            <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
+              <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
               <div>
-                <h3 className="text-xl font-bold">Websmartindia</h3>
+                <h3 className="text-xl font-bold">
+                  <a href="https://www.websmartindia.com/" target="_blank" rel="noreferrer" className="no-underline hover:underline">
+                    Websmartindia
+                  </a>
+                </h3>
                 <p className="mt-1 text-sm font-medium text-[#5b5ce2]">Software Development Intern</p>
               </div>
               <span className="text-sm text-[#667085]">Internship</span>
