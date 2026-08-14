@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <rect rx="16" width="120" height="120" fill="#0EA5A4" />
+  <g transform="translate(0,8)">
+    <rect x="14" y="26" width="92" height="56" rx="6" fill="#fff" opacity="0.08" />
+    <text x="60" y="58" font-family="Inter, Arial, Helvetica, sans-serif" font-size="16" font-weight="700" text-anchor="middle" fill="#ffffff">REST</text>
+    <text x="60" y="78" font-family="Inter, Arial, Helvetica, sans-serif" font-size="10" text-anchor="middle" fill="#ffffff">APIs</text>
+  </g>
+</svg>

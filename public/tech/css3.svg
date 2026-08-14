@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <rect rx="16" width="120" height="120" fill="#1572B6" />
+  <g transform="translate(0,8)">
+    <path d="M20 10 L100 10 L92 90 L60 104 L28 90 Z" fill="#1572B6" />
+    <text x="60" y="70" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700" text-anchor="middle" fill="#ffffff">CSS3</text>
+  </g>
+</svg>

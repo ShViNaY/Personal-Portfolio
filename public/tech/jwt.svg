@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <rect rx="16" width="120" height="120" fill="#6B21A8" />
+  <g transform="translate(0,8)">
+    <rect x="18" y="18" width="84" height="60" rx="8" fill="#7C3AED" />
+    <text x="60" y="58" font-family="Inter, Arial, Helvetica, sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="#FFF">JWT</text>
+  </g>
+</svg>

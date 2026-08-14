@@ -9,6 +9,7 @@ import {
   SiPython,
   SiMysql,
   SiPostgresql,
+  SiSqlite,
   SiGit,
   SiGithub,
   SiPostman
@@ -31,7 +32,7 @@ import {
   X,
   Linkedin
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const techStack = [
   { name: "React", icon: SiReact },
@@ -76,6 +77,8 @@ techColors["Visual Studio"] = "#5C2D91";
 techColors["React.js"] = "#61dafb";
 techColors["Tailwind CSS"] = "#38B2AC";
 techColors["Bootstrap"] = "#7952B3";
+techColors["PostgreSQL"] = "#336791";
+techColors["SQLite"] = "#003B57";
 
 const iconMap: Record<string, any> = {
   java: SiJava,
@@ -97,6 +100,7 @@ const iconMap: Record<string, any> = {
   mysql: SiMysql,
   oracledatabase: SiOracle,
   postgresql: SiPostgresql,
+  sqlite: SiSqlite,
   git: SiGit,
   github: SiGithub,
   postman: SiPostman,
@@ -452,16 +456,12 @@ export default function Portfolio() {
           <h2 className="section-title mt-3">Technologies I use to build web solutions</h2>
 
           <div className="mt-7">
-            {/* Categories rendered vertically, one item per line */}
+            {/* Categories rendered vertically, one item per line. Programming Languages removed. */}
             <div className="tech-list">
               {[
                 {
-                  title: "Programming Languages",
-                  items: ["Java", "Python", "JavaScript (ES6+)", "C#", "C", "PHP"]
-                },
-                {
                   title: "Frontend Technologies",
-                  items: ["React.js", "HTML5", "CSS3", "Bootstrap", "Tailwind CSS", "Responsive Web Design"]
+                  items: ["React.js", "JavaScript", "HTML5", "CSS3", "Bootstrap", "Tailwind CSS", "Responsive Web Design"]
                 },
                 {
                   title: "Backend Technologies",
@@ -469,50 +469,14 @@ export default function Portfolio() {
                 },
                 {
                   title: "Databases",
-                  items: ["MySQL", "Oracle Database", "SQL", "RDBMS"]
+                  items: ["MySQL", "PostgreSQL", "SQLite", "Oracle Database", "SQL", "RDBMS"]
                 },
                 {
                   title: "Tools & Platforms",
                   items: ["Git", "GitHub", "Postman", "VS Code", "IntelliJ IDEA", "PyCharm", "Jupyter Notebook", "NPM", "Visual Studio"]
                 }
-              ].map((cat) => (
-                <div key={cat.title} className="tech-category">
-                  <h4 className="tech-column-title">{cat.title}</h4>
-                  <div className="tech-row">
-                    {cat.items.map((item) => {
-                      // For Core Concepts, render plain text without icons
-                      if (cat.title === "Core Concepts") {
-                        return (
-                          <div key={item} className="core-item">
-                            <span>{item}</span>
-                          </div>
-                        );
-                      }
-
-                      const raw = item.toLowerCase().replace(/\s*\(.*\)/, "");
-                      let key = raw.replace(/[^a-z0-9]/g, "");
-                      // common aliases/normalizations
-                      if (raw.includes("es6")) key = "javascript";
-                      if (raw.includes("c#") || raw === "c#") key = "csharp";
-                      if (raw.includes("react")) key = "reactjs";
-                      if (raw.includes("tailwind")) key = "tailwindcss";
-                      if (raw.includes("vs code") || raw.includes("visual studio code")) key = "vscode";
-                      if (raw.includes("intellij")) key = "intellijidea";
-                      const Icon = iconMap[key];
-                      const color = techColors[item] ?? techColors[raw] ?? techColors[key] ?? "#667085";
-                      return (
-                        <div key={item} className="tech-item-inline">
-                          {Icon ? (
-                            <Icon size={18} title={item} color={color} />
-                          ) : (
-                            <Image src="/tech/generic.svg" alt="icon" width={16} height={16} />
-                          )}
-                          <span>{item}</span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
+              ].map((cat, idx) => (
+                <CategoryRow key={cat.title} index={idx} title={cat.title} items={cat.items} />
               ))}
             </div>
           </div>
@@ -624,5 +588,133 @@ export default function Portfolio() {
         </div>
       </section>
     </main>
+  );
+}
+
+function CategoryRow({ index, title, items }: { index: number; title: string; items: string[] }) {
+  const rowRef = useRef<HTMLDivElement | null>(null);
+  const [marquee, setMarquee] = useState(false);
+
+  useEffect(() => {
+    const el = rowRef.current;
+    if (!el) return;
+    const check = () => {
+      // If the container's scrollWidth (content width) is larger than its visible width, enable marquee
+      setMarquee(el.scrollWidth > el.clientWidth + 4);
+    };
+
+    check();
+    window.addEventListener('resize', check);
+    // also observe mutations in case content changes (icons load)
+    const mo = new MutationObserver(check);
+    mo.observe(el, { childList: true, subtree: true });
+    return () => {
+      window.removeEventListener('resize', check);
+      mo.disconnect();
+    };
+  }, []);
+
+  const renderItem = (item: string) => {
+    const raw = item.toLowerCase().replace(/\s*\(.*\)/, "");
+    const textOnlyItems = ["responsive web design", "vs code", "visual studio"];
+    if (textOnlyItems.includes(raw)) {
+      return (
+        <div key={item} className="tech-item-inline">
+          <span>{item}</span>
+        </div>
+      );
+    }
+    let key = raw.replace(/[^a-z0-9]/g, "");
+    if (raw.includes("es6")) key = "javascript";
+    if (raw.includes("c#") || raw === "c#") key = "csharp";
+    if (raw.includes("react")) key = "reactjs";
+    if (raw.includes("tailwind")) key = "tailwindcss";
+    if (raw.includes("vs code") || raw.includes("visual studio code")) key = "vscode";
+    if (raw.includes("intellij")) key = "intellijidea";
+    const Icon = iconMap[key];
+    const color = techColors[item] ?? techColors[raw] ?? techColors[key] ?? "#667085";
+
+    // Prefer local SVG badges for some entries to ensure consistent visuals
+    if (key === "javascript") {
+      return (
+        <div key={item} className="tech-item-inline">
+          <Image src="/tech/javascript.svg" alt="JavaScript" width={18} height={18} />
+          <span>{item}</span>
+        </div>
+      );
+    }
+
+    if (key === "oracledatabase" || key === "oracle") {
+      return (
+        <div key={item} className="tech-item-inline">
+          <Image src="/tech/oracle.svg" alt="Oracle Database" width={18} height={18} />
+          <span>{item}</span>
+        </div>
+      );
+    }
+
+    if (key === "sql") {
+      return (
+        <div key={item} className="tech-item-inline">
+          <Image src="/tech/sql.svg" alt="SQL" width={18} height={18} />
+          <span>{item}</span>
+        </div>
+      );
+    }
+
+    if (key === "restapis" || key === "restapi" || key === "rest") {
+      return (
+        <div key={item} className="tech-item-inline">
+          <Image src="/tech/restapis.svg" alt="REST APIs" width={18} height={18} />
+          <span>{item}</span>
+        </div>
+      );
+    }
+
+    if (key === "jwt") {
+      return (
+        <div key={item} className="tech-item-inline">
+          <Image src="/tech/jwt.svg" alt="JWT" width={18} height={18} />
+          <span>{item}</span>
+        </div>
+      );
+    }
+
+    // Prefer local SVG badge for CSS3 for consistent brand color
+    if (key === "css3") {
+      return (
+        <div key={item} className="tech-item-inline">
+          <Image src="/tech/css3.svg" alt="CSS3" width={18} height={18} />
+          <span>{item}</span>
+        </div>
+      );
+    }
+
+    return (
+      <div key={item} className="tech-item-inline">
+        {Icon ? (
+          <Icon size={18} title={item} color={color} />
+        ) : (
+          <Image src="/tech/generic.svg" alt="icon" width={16} height={16} />
+        )}
+        <span>{item}</span>
+      </div>
+    );
+  };
+
+  return (
+    <div className="tech-category">
+      <h4 className="tech-column-title">{title}</h4>
+      <div ref={rowRef} className="tech-row tech-marquee-shell" id={`tech-row-${index}`}>
+        {marquee ? (
+          <div className="tech-marquee-track tech-marquee" aria-hidden>
+            <div className="tech-marquee-track-inner">{items.map(renderItem)}</div>
+            <div className="tech-marquee-track-inner">{items.map(renderItem)}</div>
+          </div>
+        ) : (
+          <div className="tech-row-static">{items.map(renderItem)}</div>
+        )}
+      </div>
+    </div>
   );
 }
