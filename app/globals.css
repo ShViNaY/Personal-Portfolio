@@ -284,9 +284,29 @@ textarea {
 /* Highlight used for the About paragraph — does not change text color */
 .about-highlight {
   background: rgba(91,92,226,0.08);
-  padding: 6px 8px;
+  padding: 6px 8px 6px 16px; /* room for the left accent */
   border-radius: 8px;
   display: inline-block;
+  position: relative;
+}
+
+html.dark .about-highlight {
+  background: rgba(91,92,226,0.06);
+}
+
+.about-highlight::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  border-radius: 8px 0 0 8px; /* merge with container corners */
+  background: var(--accent);
+}
+
+html.dark .about-highlight::before {
+  background: var(--accent);
 }
 
 @keyframes marquee {
