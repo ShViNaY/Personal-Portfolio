@@ -151,7 +151,7 @@ const projects = [
     title: "Book Recommendation System",
     description:
       "A machine-learning based book recommendation system using collaborative filtering, popularity-based and hybrid approaches.",
-    image: "/images/book-project.svg",
+    image: "/images/book-project.png",
     tags: ["Python", "Pandas", "Scikit-learn", "NumPy", "SQL"],
     github: "https://github.com/ShViNaY/Book-Recommendation-System",
     live: ""
