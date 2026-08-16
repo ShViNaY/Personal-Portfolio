@@ -392,6 +392,313 @@ html.dark .about-highlight::before {
   transform: translateY(-1px);
 }
 
+.cal-contact-shell {
+  background: #f7f8fb;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 26px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
+  overflow: hidden;
+}
+
+.cal-contact-grid {
+  display: grid;
+  gap: 28px;
+  padding: clamp(24px, 3vw, 36px);
+}
+
+.cal-contact-grid.schedule-mode {
+  grid-template-columns: 1fr;
+}
+
+.cal-contact-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(8px, 1vw, 12px);
+}
+
+.cal-contact-copy .pill-lg {
+  color: #4f46e5;
+  font-size: 14px;
+}
+
+.cal-contact-copy .section-title {
+  color: #111827;
+}
+
+.cal-contact-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 28px;
+  width: fit-content;
+  padding: 10px 14px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 12px;
+  background: rgba(79, 70, 229, 0.04);
+  color: #111827;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.cal-contact-email-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: rgba(79, 70, 229, 0.1);
+  color: #4f46e5;
+}
+
+.cal-contact-social {
+  background: #ffffff;
+  border-color: rgba(148, 163, 184, 0.3);
+  color: #374151;
+}
+
+.cal-contact-social:hover {
+  color: #4f46e5;
+  border-color: rgba(79, 70, 229, 0.38);
+}
+
+.cal-contact-panel {
+  background: #ffffff;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 20px;
+  overflow: hidden;
+  min-height: 100%;
+}
+
+.schedule-panel {
+  max-width: 980px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.cal-contact-tabs {
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.22);
+  padding: 0 24px;
+  background: #ffffff;
+}
+
+.cal-contact-tabs-inline {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.cal-contact-tab {
+  position: relative;
+  border: 0;
+  background: transparent;
+  color: #667085;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: color 150ms ease, background 120ms ease, transform 120ms ease;
+  border-radius: 8px;
+}
+
+.cal-contact-tab.inline {
+  padding: 8px 14px;
+  background: #f8fafc;
+  border: 1px solid rgba(148,163,184,0.18);
+}
+
+.cal-contact-tab.inline.active {
+  color: #fff;
+  background: linear-gradient(135deg,#4f46e5,#5b5ce2);
+  transform: translateY(-1px);
+}
+
+.cal-contact-tab.active::after {
+  display: none;
+}
+
+.cal-contact-body {
+  padding: 24px 24px 20px;
+}
+
+.cal-contact-form {
+  display: grid;
+  gap: 18px;
+}
+
+.cal-contact-field {
+  width: 100%;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 15px 16px;
+  outline: none;
+  color: #111827;
+  font-size: 15px;
+  transition: border-color 150ms ease, box-shadow 150ms ease, background 150ms ease;
+}
+
+.cal-contact-field::placeholder {
+  color: #98a0ad;
+}
+
+.cal-contact-field:focus {
+  border-color: rgba(79, 70, 229, 0.7);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.08);
+  background: #ffffff;
+}
+
+.cal-contact-textarea {
+  min-height: 185px;
+  resize: vertical;
+}
+
+.cal-contact-submit {
+  width: 100%;
+  min-height: 52px;
+  border-radius: 12px !important;
+  background: linear-gradient(135deg, #4f46e5, #5b5ce2) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  font-size: 16px !important;
+}
+
+.cal-contact-submit:hover {
+  filter: brightness(1.06);
+}
+
+.cal-contact-copy-note {
+  margin: 0 0 18px;
+  font-size: 14px;
+  color: #475467;
+}
+
+.cal-contact-iframe-wrap {
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: #ffffff;
+}
+
+.cal-contact-iframe-wrap iframe {
+  display: block;
+  width: 100%;
+  min-height: 520px;
+  border: 0;
+  background: transparent;
+}
+
+/* New embed scale wrapper to reduce internal size of Cal.com UI */
+.cal-embed-shell {
+  overflow: hidden;
+}
+
+.cal-embed-scale-wrap {
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Scale factor: tweak --cal-embed-scale to change the internal size. Default 0.88 (88%).
+   The technique below keeps the outer embed container at a fixed height/width while the
+   inner iframe content is scaled down. This preserves the external layout/size. */
+:root {
+  --cal-embed-scale: 0.88;
+  --cal-embed-height: 520px; /* visible outer height */
+}
+
+/* Outer visible box — keep this size fixed */
+.cal-embed-scale-wrap {
+  height: var(--cal-embed-height);
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Inner element is enlarged in width/height to compensate for scaling, then scaled down.
+   Use transform-origin: top left so the content aligns correctly inside the clipped box. */
+.cal-embed-scale {
+  transform-origin: top left;
+  transform: scale(var(--cal-embed-scale));
+  width: calc(100% / var(--cal-embed-scale));
+  height: calc(100% / var(--cal-embed-scale));
+}
+
+/* Make the iframe fill the scaled inner area; the outer .cal-embed-scale-wrap
+   controls the visible external size (var(--cal-embed-height)). */
+.cal-embed-scale iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+@media (max-width: 1000px) {
+  :root { --cal-embed-scale: 0.92; --cal-embed-height: 520px; }
+  .cal-embed-scale { width: calc(100% / var(--cal-embed-scale)); height: calc(100% / var(--cal-embed-scale)); }
+}
+
+.cal-scheduler-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.cal-scheduler-left {
+  background: rgba(247,248,251,0.9);
+  border: 1px solid rgba(148,163,184,0.18);
+  padding: 14px;
+  border-radius: 12px;
+  text-align: left;
+}
+
+.cal-scheduler-avatar img {
+  border-radius: 8px;
+}
+
+.cal-scheduler-name {
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+.cal-scheduler-type {
+  font-weight: 700;
+  margin-top: 12px;
+  font-size: 18px;
+}
+
+.cal-scheduler-desc {
+  margin-top: 10px;
+  color: #475467;
+  font-size: 14px;
+}
+
+@media (max-width: 1000px) {
+  .cal-scheduler-layout {
+    grid-template-columns: 1fr;
+  }
+  .cal-contact-iframe-wrap iframe { min-height: 520px; }
+}
+
+@media (min-width: 1000px) {
+  .cal-contact-grid {
+    grid-template-columns: 0.9fr 1.1fr;
+    align-items: stretch;
+  }
+
+  .cal-contact-grid.schedule-mode {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 999px) {
+  .cal-contact-grid {
+    padding: 20px;
+  }
+}
+
 .field {
   width: 100%;
   border: 2px solid var(--border);

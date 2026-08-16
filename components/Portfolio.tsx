@@ -12,8 +12,14 @@ import {
   SiSqlite,
   SiGit,
   SiGithub,
-  SiPostman
-  , SiJava, SiCsharp, SiC, SiPhp, SiHtml5, SiCss3, SiBootstrap, SiTailwindcss, SiFlask, SiOracle, SiVisualstudiocode, SiIntellijidea, SiPycharm, SiJupyter, SiNpm, SiVisualstudio
+  SiPostman,
+  SiBootstrap,
+  SiTailwindcss,
+  SiFlask,
+  SiIntellijidea,
+  SiPycharm,
+  SiJupyter,
+  SiNpm
 } from "@icons-pack/react-simple-icons";
 
 
@@ -81,16 +87,10 @@ techColors["PostgreSQL"] = "#336791";
 techColors["SQLite"] = "#003B57";
 
 const iconMap: Record<string, any> = {
-  java: SiJava,
   python: SiPython,
   javascript: SiJavascript,
   typescript: SiTypescript,
-  csharp: SiCsharp,
-  c: SiC,
-  php: SiPhp,
   reactjs: SiReact,
-  html5: SiHtml5,
-  css3: SiCss3,
   bootstrap: SiBootstrap,
   tailwindcss: SiTailwindcss,
   nodejs: SiNodedotjs,
@@ -98,18 +98,15 @@ const iconMap: Record<string, any> = {
   django: SiDjango,
   flask: SiFlask,
   mysql: SiMysql,
-  oracledatabase: SiOracle,
   postgresql: SiPostgresql,
   sqlite: SiSqlite,
   git: SiGit,
   github: SiGithub,
   postman: SiPostman,
-  vscode: SiVisualstudiocode,
   intellijidea: SiIntellijidea,
   pycharm: SiPycharm,
   jupyternotebook: SiJupyter,
-  npm: SiNpm,
-  visualstudio: SiVisualstudio
+  npm: SiNpm
 };
 
 const services = [
@@ -162,6 +159,9 @@ export default function Portfolio() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const closeMenu = () => setMobileOpen(false);
+
+  // Contact tab state
+  const [contactTab, setContactTab] = useState<"message" | "schedule">("message");
 
   // Contact form state (controlled inputs)
   const [contactName, setContactName] = useState("");
@@ -489,101 +489,185 @@ export default function Portfolio() {
 
       <section id="contact" className="section pt-0">
         <div className="container">
-          <div className="card grid gap-10 p-7 md:grid-cols-[0.8fr_1.2fr] md:p-10">
-            <div>
-              <div className="pill pill-lg">Contact</div>
-              <h2 className="section-title mt-3">Let&apos;s work together.</h2>
-              <p className="mt-4 max-w-md text-sm leading-6 text-[#667085]">
-                Have a project in mind? Send me an email and tell me what you&apos;re looking to build.
-              </p>
+          <div className="cal-contact-shell">
+            <div className={`cal-contact-grid ${contactTab === "schedule" ? "schedule-mode" : ""}`}>
+              {contactTab === "message" && (
+                <div className="cal-contact-copy">
+                  <div className="pill pill-lg">Contact</div>
+                  <h2 className="section-title mt-3">Let&apos;s work together.</h2>
+                  <p className="mt-4 max-w-xl text-sm leading-6 text-[#475467]">
+                    Have a project in mind? Send me an email, tell me what you&apos;re looking to build, or schedule a meeting directly.
+                  </p>
 
-              <a
-                href="mailto:shvinaysiddhu@gmail.com"
-                className="mt-7 inline-flex items-center gap-3 text-sm font-semibold"
-              >
-                <span className="rounded-lg bg-[#f0f0ff] p-2 text-[#5b5ce2]">
-                  <Mail size={18} />
-                </span>
-                shvinaysiddhu@gmail.com
-              </a>
+                  <a
+                    href="mailto:shvinaysiddhu@gmail.com"
+                    className="cal-contact-email"
+                  >
+                    <span className="cal-contact-email-icon">
+                      <Mail size={18} />
+                    </span>
+                    shvinaysiddhu@gmail.com
+                  </a>
 
-              <div className="mt-6 flex gap-3">
-                <a
-                  href="https://www.linkedin.com/in/vinay-sh-636a71288/"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="LinkedIn"
-                  className="social"
-                >
-                  <Linkedin size={17} />
-                </a>
-                <a
-                  href="https://github.com/ShViNaY/"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="GitHub"
-                  className="social"
-                >
-                  <Github size={17} />
-                </a>
-                <a
-                  href="https://x.com/Sh__vinay"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="X"
-                  className="social"
-                >
-                  𝕏
-                </a>
+                  <div className="mt-6 flex gap-3">
+                    <a
+                      href="https://www.linkedin.com/in/vinay-sh-636a71288/"
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label="LinkedIn"
+                      className="social cal-contact-social"
+                    >
+                      <Linkedin size={17} />
+                    </a>
+                    <a
+                      href="https://github.com/ShViNaY/"
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label="GitHub"
+                      className="social cal-contact-social"
+                    >
+                      <Github size={17} />
+                    </a>
+                    <a
+                      href="https://x.com/Sh__vinay"
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label="X"
+                      className="social cal-contact-social"
+                    >
+                      𝕏
+                    </a>
+                  </div>
+                </div>
+              )}
+
+              <div className={`cal-contact-panel ${contactTab === "schedule" ? "schedule-panel" : ""}`}>
+                {/* tabs removed from panel header: tabs are rendered inline above the name box inside the panel body */}
+
+                {contactTab === "message" && (
+                  <div className="cal-contact-body">
+                    <div className="cal-contact-tabs-inline" role="tablist" aria-label="Contact options">
+                      <button
+                        type="button"
+                        role="tab"
+                        aria-selected={true}
+                        onClick={() => setContactTab("message")}
+                        className={`cal-contact-tab inline active`}
+                      >
+                        Send Message
+                      </button>
+                      <button
+                        type="button"
+                        role="tab"
+                        aria-selected={false}
+                        onClick={() => setContactTab("schedule")}
+                        className={`cal-contact-tab inline`}
+                      >
+                        Schedule Meeting
+                      </button>
+                    </div>
+                    <form className="cal-contact-form" onSubmit={handleContactSubmit}>
+                      <div className="grid gap-4 sm:grid-cols-2">
+                        <input
+                          required
+                          name="name"
+                          placeholder="Your Name"
+                          className="cal-contact-field"
+                          value={contactName}
+                          onChange={(e) => setContactName(e.target.value)}
+                        />
+
+                        <input
+                          required
+                          type="email"
+                          name="email"
+                          placeholder="Your Email"
+                          className="cal-contact-field"
+                          value={contactEmail}
+                          onChange={(e) => setContactEmail(e.target.value)}
+                        />
+                      </div>
+
+                      <textarea
+                        required
+                        name="message"
+                        placeholder="Tell me what's on your mind..."
+                        rows={7}
+                        className="cal-contact-field cal-contact-textarea"
+                        value={contactMessage}
+                        onChange={(e) => setContactMessage(e.target.value)}
+                      />
+
+                      <div>
+                        <button className="btn cal-contact-submit" type="submit" disabled={formStatus === "sending"}>
+                          {formStatus === "sending" ? "Sending..." : "Send Message"} <ArrowRight size={15} />
+                        </button>
+
+                        {formStatus === "success" && (
+                          <div className="mt-3 text-sm text-emerald-600">Thanks — your message has been sent.</div>
+                        )}
+                        {formStatus === "error" && (
+                          <div className="mt-3 text-sm text-red-600">{formError || "Submission failed."}</div>
+                        )}
+                      </div>
+                    </form>
+                  </div>
+                )}
+
+                {/* When schedule is selected we no longer render the scheduler inside the card; the embed is rendered below the card so the left copy remains visible. */}
+                {contactTab === "schedule" && (
+                  <div className="cal-contact-body">
+                    <div className="cal-contact-tabs-inline" role="tablist" aria-label="Contact options">
+                      <button
+                        type="button"
+                        role="tab"
+                        aria-selected={false}
+                        onClick={() => setContactTab("message")}
+                        className={`cal-contact-tab inline`}
+                      >
+                        Send Message
+                      </button>
+                      <button
+                        type="button"
+                        role="tab"
+                        aria-selected={true}
+                        onClick={() => setContactTab("schedule")}
+                        className={`cal-contact-tab inline active`}
+                      >
+                        Schedule Meeting
+                      </button>
+                    </div>
+
+                    <p className="cal-contact-copy-note">Pick a time that works for you. I&apos;ll send a calendar invite to your email.</p>
+
+                    <div className="cal-contact-iframe-placeholder">
+                      {/* placeholder — actual embed is rendered below the card so the contact copy stays visible */}
+                    </div>
+                  </div>
+                )}
+
               </div>
             </div>
-
-            <form className="grid gap-4" onSubmit={handleContactSubmit}>
-              <div className="grid gap-4 sm:grid-cols-2">
-                <input
-                  required
-                  name="name"
-                  placeholder="Your Name"
-                  className="field"
-                  value={contactName}
-                  onChange={(e) => setContactName(e.target.value)}
-                />
-
-                <input
-                  required
-                  type="email"
-                  name="email"
-                  placeholder="Your Email"
-                  className="field"
-                  value={contactEmail}
-                  onChange={(e) => setContactEmail(e.target.value)}
-                />
-              </div>
-
-              <textarea
-                required
-                name="message"
-                placeholder="Tell me what's on your mind..."
-                rows={7}
-                className="field resize-none"
-                value={contactMessage}
-                onChange={(e) => setContactMessage(e.target.value)}
-              />
-
-              <div>
-                <button className="btn btn-primary w-full" type="submit" disabled={formStatus === "sending"}>
-                  {formStatus === "sending" ? "Sending..." : "Send Message"} <ArrowRight size={15} />
-                </button>
-
-                {formStatus === "success" && (
-                  <div className="mt-3 text-sm text-green-600">Thanks — your message has been sent.</div>
-                )}
-                {formStatus === "error" && (
-                  <div className="mt-3 text-sm text-red-600">{formError || "Submission failed."}</div>
-                )}
-              </div>
-            </form>
           </div>
+
+          {/* Render Cal.com embed below the contact card when schedule tab is active. This keeps the card (left copy + send message form) visible above. */}
+          {contactTab === "schedule" && (
+            <div className="container mt-6">
+              <div className="cal-embed-shell rounded-xl border border-[#e7e9ef] bg-white p-4">
+                <div className="cal-embed-scale-wrap">
+                  <div className="cal-embed-scale">
+                    <iframe
+                      src="https://cal.com/shvinay/30min?theme=light"
+                      width="100%"
+                      height="520"
+                      frameBorder="0"
+                      title="Cal.com Scheduling"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
 
           <footer className="flex flex-col gap-3 border-t border-[#e7e9ef] py-7 text-xs text-[#667085] sm:flex-row sm:items-center sm:justify-between">
             <span>© 2026 Vinay S H. All rights reserved.</span>
@@ -637,6 +721,14 @@ function CategoryRow({ index, title, items }: { index: number; title: string; it
     if (raw.includes("intellij")) key = "intellijidea";
     const Icon = iconMap[key];
     const color = techColors[item] ?? techColors[raw] ?? techColors[key] ?? "#667085";
+
+    if (!Icon) {
+      return (
+        <div key={item} className="tech-item-inline">
+          <span>{item}</span>
+        </div>
+      );
+    }
 
     // Prefer local SVG badges for some entries to ensure consistent visuals
     if (key === "javascript") {
