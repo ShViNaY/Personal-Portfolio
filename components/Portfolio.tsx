@@ -171,6 +171,7 @@ export default function Portfolio() {
   const [formError, setFormError] = useState("");
 
   const FORMSPREE_ENDPOINT = "https://formspree.io/f/mljrnqvp";
+  const RESUME_PATH = "/resume/Vinay_SH_Resume.pdf";
 
   const handleContactSubmit = async (e: any) => {
     e.preventDefault();
@@ -219,6 +220,7 @@ export default function Portfolio() {
             <a className="nav-link" href="#services">Services</a>
             <a className="nav-link" href="#projects">Projects</a>
             <a className="nav-link" href="#experience">Experience</a>
+            <a className="nav-link" href={RESUME_PATH} target="_blank" rel="noreferrer">Resume</a>
             <a className="nav-link" href="#contact">Contact</a>
           </nav>
 
@@ -254,6 +256,15 @@ export default function Portfolio() {
                   {label}
                 </a>
               ))}
+              <a
+                href={RESUME_PATH}
+                target="_blank"
+                rel="noreferrer"
+                onClick={closeMenu}
+                className="border-b border-[#f0f1f4] py-4 text-sm font-medium"
+              >
+                Resume
+              </a>
               <a href="#contact" onClick={closeMenu} className="btn btn-primary mt-4">
                 Hire Me <ArrowRight size={15} />
               </a>
@@ -283,6 +294,9 @@ export default function Portfolio() {
             <div className="mt-7 flex flex-wrap gap-3">
               <a href="#projects" className="btn btn-primary">
                 View My Work <ArrowRight size={15} />
+              </a>
+              <a href={RESUME_PATH} target="_blank" rel="noreferrer" className="btn btn-secondary">
+                View Resume <ExternalLink size={15} />
               </a>
               <a href="#contact" className="btn btn-secondary">
                 Hire Me <ArrowRight size={15} />
