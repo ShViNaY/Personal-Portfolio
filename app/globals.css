@@ -572,8 +572,8 @@ html.dark .about-highlight::before {
 }
 
 .cal-contact-copy-note {
-  margin: 0 0 18px;
-  font-size: 14px;
+  margin: 0 0 10px;
+  font-size: 13px;
   color: #475467;
 }
 
@@ -592,52 +592,42 @@ html.dark .about-highlight::before {
   background: transparent;
 }
 
-/* New embed scale wrapper to reduce internal size of Cal.com UI */
+.cal-schedule-standalone {
+  position: relative;
+  width: 100%;
+  margin-top: 10px;
+  isolation: isolate;
+}
+
 .cal-embed-shell {
+  position: relative;
+  z-index: 1;
   overflow: hidden;
+  isolation: isolate;
+  background: #ffffff;
+  box-shadow: none;
+  padding: 0 !important;
+  border-color: rgba(148, 163, 184, 0.18) !important;
 }
 
-.cal-embed-scale-wrap {
-  overflow: hidden;
+.cal-embed-viewport {
+  position: relative;
   width: 100%;
+  height: 440px;
+  overflow: auto;
+  background: #ffffff;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.7) transparent;
+  overscroll-behavior: contain;
 }
 
-/* Scale factor: tweak --cal-embed-scale to change the internal size. Default 0.88 (88%).
-   The technique below keeps the outer embed container at a fixed height/width while the
-   inner iframe content is scaled down. This preserves the external layout/size. */
-:root {
-  --cal-embed-scale: 0.88;
-  --cal-embed-height: 520px; /* visible outer height */
-}
-
-/* Outer visible box — keep this size fixed */
-.cal-embed-scale-wrap {
-  height: var(--cal-embed-height);
-  overflow: hidden;
-  width: 100%;
-}
-
-/* Inner element is enlarged in width/height to compensate for scaling, then scaled down.
-   Use transform-origin: top left so the content aligns correctly inside the clipped box. */
-.cal-embed-scale {
-  transform-origin: top left;
-  transform: scale(var(--cal-embed-scale));
-  width: calc(100% / var(--cal-embed-scale));
-  height: calc(100% / var(--cal-embed-scale));
-}
-
-/* Make the iframe fill the scaled inner area; the outer .cal-embed-scale-wrap
-   controls the visible external size (var(--cal-embed-height)). */
-.cal-embed-scale iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
+.cal-embed-viewport iframe {
   display: block;
-}
-
-@media (max-width: 1000px) {
-  :root { --cal-embed-scale: 0.92; --cal-embed-height: 520px; }
-  .cal-embed-scale { width: calc(100% / var(--cal-embed-scale)); height: calc(100% / var(--cal-embed-scale)); }
+  width: 100%;
+  min-width: 100%;
+  height: 700px;
+  border: 0;
+  background: transparent;
 }
 
 .cal-scheduler-layout {

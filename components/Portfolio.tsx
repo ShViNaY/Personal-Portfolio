@@ -652,18 +652,16 @@ export default function Portfolio() {
 
           {/* Render Cal.com embed below the contact card when schedule tab is active. This keeps the card (left copy + send message form) visible above. */}
           {contactTab === "schedule" && (
-            <div className="container mt-6">
+            <div className="cal-schedule-standalone">
               <div className="cal-embed-shell rounded-xl border border-[#e7e9ef] bg-white p-4">
-                <div className="cal-embed-scale-wrap">
-                  <div className="cal-embed-scale">
-                    <iframe
-                      src="https://cal.com/shvinay/30min?theme=light"
-                      width="100%"
-                      height="520"
-                      frameBorder="0"
-                      title="Cal.com Scheduling"
-                    />
-                  </div>
+                <div className="cal-embed-viewport">
+                  <iframe
+                    src="https://cal.com/shvinay/30min?theme=light"
+                    width="100%"
+                    height="860"
+                    frameBorder="0"
+                    title="Cal.com Scheduling"
+                  />
                 </div>
               </div>
             </div>
