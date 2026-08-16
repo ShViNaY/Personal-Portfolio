@@ -683,7 +683,10 @@ export default function Portfolio() {
 
           <footer className="flex flex-col gap-3 border-t border-[#e7e9ef] py-7 text-xs text-[#667085] sm:flex-row sm:items-center sm:justify-between">
             <span>© 2026 Vinay S H. All rights reserved.</span>
-            <a href="#home" className="font-semibold text-[#5b5ce2]">Back to top ↑</a>
+            <a href="#home" className="back-to-top">
+              <span>Back to top</span>
+              <span aria-hidden="true">↑</span>
+            </a>
           </footer>
         </div>
       </section>
