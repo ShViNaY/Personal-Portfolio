@@ -225,7 +225,7 @@ export default function Portfolio() {
           </nav>
 
           <a href="#contact" className="btn btn-primary hidden md:inline-flex">
-            Hire Me <ArrowRight size={15} />
+            Work With Me <ArrowRight size={15} />
           </a>
 
           <button
@@ -266,7 +266,7 @@ export default function Portfolio() {
                 Resume
               </a>
               <a href="#contact" onClick={closeMenu} className="btn btn-primary mt-4">
-                Hire Me <ArrowRight size={15} />
+                Work With Me <ArrowRight size={15} />
               </a>
             </nav>
           </div>
@@ -299,7 +299,7 @@ export default function Portfolio() {
                 View Resume <ExternalLink size={15} />
               </a>
               <a href="#contact" className="btn btn-secondary">
-                Hire Me <ArrowRight size={15} />
+                Work With Me <ArrowRight size={15} />
               </a>
             </div>
           </div>
