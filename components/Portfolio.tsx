@@ -449,8 +449,8 @@ export default function Portfolio() {
               <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
               <div>
                 <h3 className="text-xl font-bold">
-                  <a href="https://www.websmartindia.com/" target="_blank" rel="noreferrer" className="no-underline hover:underline">
-                    Websmartindia
+                  <a href="https://www.websmartindia.com/" target="_blank" rel="noreferrer" className="experience-company-link">
+                    WebsmartIndia <span aria-hidden="true">↗</span>
                   </a>
                 </h3>
                 <p className="mt-1 text-sm font-medium text-[#5b5ce2]">Software Development Intern</p>
