@@ -27,6 +27,8 @@ import Image from "next/image";
 import {
   ArrowRight,
   BriefcaseBusiness,
+  ChevronDown,
+  ChevronUp,
   Code2,
   ExternalLink,
   Github,
@@ -162,6 +164,11 @@ export default function Portfolio() {
 
   // Contact tab state
   const [contactTab, setContactTab] = useState<"message" | "schedule">("message");
+
+  // Projects toggle state
+  const [showAllProjects, setShowAllProjects] = useState(false);
+  const visibleProjects = showAllProjects ? projects : projects.slice(0, 2);
+  const hasMoreProjects = projects.length > 2;
 
   // Contact form state (controlled inputs)
   const [contactName, setContactName] = useState("");
@@ -388,7 +395,7 @@ export default function Portfolio() {
           </div>
 
           <div className="mt-8 grid gap-5 md:grid-cols-2">
-            {projects.map((project) => (
+            {visibleProjects.map((project) => (
               <article key={project.title} className="card overflow-hidden">
                 <div className="relative aspect-[16/8.5] bg-[#f1f2f6]">
                   <Image
@@ -433,10 +440,27 @@ export default function Portfolio() {
             ))}
           </div>
 
-          <div className="mt-5 rounded-xl border border-dashed border-[#d9dce4] bg-white p-5 text-center text-sm text-[#667085]">
-            More projects can be added here later. Each project supports a screenshot, technology
-            tags, GitHub link and optional live-demo link.
-          </div>
+          {hasMoreProjects && (
+            <div className="mt-6 flex justify-center">
+              <button
+                type="button"
+                onClick={() => setShowAllProjects((prev) => !prev)}
+                className="inline-flex items-center gap-2 rounded-full border border-[#dfe3ea] bg-white px-4 py-2 text-sm font-semibold text-[#5b5ce2] shadow-sm transition hover:border-[#cfd2dc] hover:bg-[#f8f8ff]"
+              >
+                {showAllProjects ? (
+                  <>
+                    <span>View Less</span>
+                    <ChevronUp size={16} />
+                  </>
+                ) : (
+                  <>
+                    <span>View More</span>
+                    <ChevronDown size={16} />
+                  </>
+                )}
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
