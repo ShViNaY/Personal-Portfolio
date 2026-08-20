@@ -243,6 +243,9 @@ textarea {
   text-decoration-color: rgba(91, 92, 226, 0.45);
   font-weight: 700;
   transition: color 150ms ease, text-decoration-color 150ms ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .experience-company-link:hover {
