@@ -41,6 +41,7 @@ import {
   Linkedin
 } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 
 const techStack = [
   { name: "React", icon: SiReact },
@@ -195,9 +196,22 @@ const projects = [
 ];
 
 export default function Portfolio() {
+  const prefersReducedMotion = useReducedMotion();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const closeMenu = () => setMobileOpen(false);
+  const navMotion = prefersReducedMotion
+    ? {}
+    : { initial: { opacity: 0, y: -14 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] as const } };
+  const fadeUp = (delay = 0, duration = 0.5) =>
+    prefersReducedMotion
+      ? {}
+      : {
+          initial: { opacity: 0, y: 18 },
+          whileInView: { opacity: 1, y: 0 },
+          viewport: { once: true, amount: 0.2 },
+          transition: { duration, delay, ease: [0.22, 1, 0.36, 1] as const }
+        };
 
   // Contact tab state
   const [contactTab, setContactTab] = useState<"message" | "schedule">("message");
@@ -253,7 +267,7 @@ export default function Portfolio() {
 
   return (
     <main>
-      <header className="sticky top-0 z-50 border-b border-[#e7e9ef]/90 bg-[#fbfbfd]/95 backdrop-blur-sm">
+      <motion.header {...navMotion} className="sticky top-0 z-50 border-b border-[#e7e9ef]/90 bg-[#fbfbfd]/95 backdrop-blur-sm">
         <div className="container flex h-[72px] items-center justify-between">
           <a href="#home" className="text-[17px] font-bold tracking-[-0.02em]">
             VINAY SH
@@ -282,7 +296,12 @@ export default function Portfolio() {
         </div>
 
         {mobileOpen && (
-          <div className="border-t border-[#e7e9ef] bg-white md:hidden">
+          <motion.div
+            initial={prefersReducedMotion ? false : { opacity: 0, y: -8 }}
+            animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+            exit={prefersReducedMotion ? undefined : { opacity: 0, y: -8 }}
+            className="border-t border-[#e7e9ef] bg-white md:hidden"
+          >
             <nav className="container flex flex-col py-3">
               {[
                 ["About", "#about"],
@@ -290,15 +309,18 @@ export default function Portfolio() {
                 ["Projects", "#projects"],
                 ["Experience", "#experience"],
                 ["Contact", "#contact"]
-              ].map(([label, href]) => (
-                <a
+              ].map(([label, href], index) => (
+                <motion.a
                   key={label}
                   href={href}
                   onClick={closeMenu}
+                  initial={prefersReducedMotion ? false : { opacity: 0, x: -10 }}
+                  animate={prefersReducedMotion ? undefined : { opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.05, duration: 0.2 }}
                   className="border-b border-[#f0f1f4] py-4 text-sm font-medium"
                 >
                   {label}
-                </a>
+                </motion.a>
               ))}
               <a
                 href={RESUME_PATH}
@@ -313,13 +335,13 @@ export default function Portfolio() {
                 Work With Me <ArrowRight size={15} />
               </a>
             </nav>
-          </div>
+          </motion.div>
         )}
-      </header>
+      </motion.header>
 
-      <section id="home" className="container scroll-mt-20 pt-10 md:pt-14">
-          <div className="grid overflow-hidden rounded-[22px] border border-[#e7e9ef] bg-white lg:grid-cols-[0.92fr_1.08fr]">
-          <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-14">
+      <motion.section id="home" className="container scroll-mt-20 pt-10 md:pt-14" {...fadeUp(0, 0.55)}>
+        <div className="grid overflow-hidden rounded-[22px] border border-[#e7e9ef] bg-white lg:grid-cols-[0.92fr_1.08fr]">
+          <motion.div className="flex flex-col justify-center p-7 sm:p-10 lg:p-14" initial={prefersReducedMotion ? false : { opacity: 0, x: -18 }} animate={prefersReducedMotion ? undefined : { opacity: 1, x: 0 }} transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}>
             <div className="pill pill-lg">
               <span className="pill-dot" />
               Available for freelance work
@@ -335,7 +357,7 @@ export default function Portfolio() {
               Full-Stack Web Developer specializing in React, Node.js, Express and Django.
             </p>
 
-            <div className="mt-7 flex flex-wrap gap-3">
+            <motion.div className="mt-7 flex flex-wrap gap-3" initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }} animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }} transition={{ duration: 0.45, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}>
               <a href="#projects" className="btn btn-primary">
                 View My Work <ArrowRight size={15} />
               </a>
@@ -345,10 +367,10 @@ export default function Portfolio() {
               <a href="#contact" className="btn btn-secondary">
                 Work With Me <ArrowRight size={15} />
               </a>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          <div className="relative min-h-[320px] overflow-hidden bg-[#f3f4f8] lg:min-h-[440px]">
+          <motion.div className="relative min-h-[320px] overflow-hidden bg-[#f3f4f8] lg:min-h-[440px]" initial={prefersReducedMotion ? false : { opacity: 0, x: 20 }} animate={prefersReducedMotion ? undefined : { opacity: 1, x: 0 }} transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}>
             <Image
               src="/images/anime-developer.svg"
               alt="Anime-style developer working at a desk"
@@ -356,13 +378,13 @@ export default function Portfolio() {
               priority
               className="object-cover"
             />
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
-      <section id="about" className="section">
+      <motion.section id="about" className="section" {...fadeUp(0.05, 0.55)}>
         <div className="container">
-          <div className="card grid gap-8 p-7 md:grid-cols-[1.25fr_1fr] md:p-10">
+          <motion.div className="card grid gap-8 p-7 md:grid-cols-[1.25fr_1fr] md:p-10" initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }} whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}>
             <div>
               <div className="pill pill-lg">About Me</div>
               <h2 className="section-title mt-3">
@@ -391,7 +413,7 @@ export default function Portfolio() {
             </div>
 
             <div className="flex items-center justify-center md:justify-end">
-              <div className="relative w-full max-w-[420px] overflow-hidden rounded-[22px] border border-[#e7e9ef] bg-[#f5f6fa] shadow-sm">
+              <motion.div className="relative w-full max-w-[420px] overflow-hidden rounded-[22px] border border-[#e7e9ef] bg-[#f5f6fa] shadow-sm" initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.98 }} whileInView={prefersReducedMotion ? undefined : { opacity: 1, scale: 1 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}>
                 <div className="relative aspect-[4/3] w-full">
                   <Image
                     src="/images/About%20Me.png"
@@ -400,31 +422,39 @@ export default function Portfolio() {
                     className="object-cover"
                   />
                 </div>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
-      <section id="services" className="section pt-0">
+      <motion.section id="services" className="section pt-0" {...fadeUp(0.08, 0.55)}>
         <div className="container">
           <div className="pill pill-lg">Services</div>
           <h2 className="section-title mt-3">What I can help you with</h2>
           <p className="section-subtitle">Focused development services for practical web projects.</p>
 
           <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {services.map(({ icon: Icon, title, description }) => (
-              <div key={title} className="card p-6 transition hover:-translate-y-0.5 hover:border-[#cfd2dc]">
+            {services.map(({ icon: Icon, title, description }, index) => (
+              <motion.div
+                key={title}
+                className="card p-6 transition hover:-translate-y-0.5 hover:border-[#cfd2dc]"
+                initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
+                whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.45, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={prefersReducedMotion ? undefined : { y: -6, transition: { duration: 0.2 } }}
+              >
                 <Icon size={25} className="text-[#5b5ce2]" />
                 <h3 className="mt-5 text-[16px] font-bold">{title}</h3>
                 <p className="mt-3 text-sm leading-6 text-[#667085]">{description}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      <section id="projects" className="section pt-0">
+      <motion.section id="projects" className="section pt-0" {...fadeUp(0.08, 0.55)}>
         <div className="container">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
@@ -443,8 +473,16 @@ export default function Portfolio() {
           </div>
 
           <div className="mt-8 grid gap-5 md:grid-cols-2">
-            {visibleProjects.map((project) => (
-              <article key={project.title} className="card overflow-hidden">
+            {visibleProjects.map((project, index) => (
+              <motion.article
+                key={project.title}
+                className="card overflow-hidden"
+                initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
+                whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.45, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={prefersReducedMotion ? undefined : { y: -6, transition: { duration: 0.2 } }}
+              >
                 <div className="relative aspect-[16/8.5] bg-[#f1f2f6]">
                   <Image
                     src={project.image}
@@ -484,7 +522,7 @@ export default function Portfolio() {
                     </a>
                   </div>
                 </div>
-              </article>
+              </motion.article>
             ))}
           </div>
 
@@ -510,7 +548,7 @@ export default function Portfolio() {
             </div>
           )}
         </div>
-      </section>
+      </motion.section>
 
       <section id="experience" className="section pt-0">
         <div className="container">
@@ -559,13 +597,12 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <section className="section overflow-hidden pt-0">
+      <motion.section className="section overflow-hidden pt-0" {...fadeUp(0.08, 0.55)}>
         <div className="container">
           <div className="pill pill-lg">Tech Stack</div>
           <h2 className="section-title mt-3">Technologies I use to build web solutions</h2>
 
           <div className="mt-7">
-            {/* Categories rendered vertically, one item per line. Programming Languages removed. */}
             <div className="tech-list">
               {[
                 {
@@ -598,11 +635,11 @@ export default function Portfolio() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      <section id="contact" className="section pt-0">
+      <motion.section id="contact" className="section pt-0" {...fadeUp(0.08, 0.55)}>
         <div className="container">
-          <div className="cal-contact-shell">
+          <motion.div className="cal-contact-shell" initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }} whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}>
             <div className={`cal-contact-grid ${contactTab === "schedule" ? "schedule-mode" : ""}`}>
               {contactTab === "message" && (
                 <div className="cal-contact-copy">
@@ -655,8 +692,6 @@ export default function Portfolio() {
               )}
 
               <div className={`cal-contact-panel ${contactTab === "schedule" ? "schedule-panel" : ""}`}>
-                {/* tabs removed from panel header: tabs are rendered inline above the name box inside the panel body */}
-
                 {contactTab === "message" && (
                   <div className="cal-contact-body">
                     <div className="cal-contact-tabs-inline" role="tablist" aria-label="Contact options">
@@ -727,7 +762,6 @@ export default function Portfolio() {
                   </div>
                 )}
 
-                {/* When schedule is selected we no longer render the scheduler inside the card; the embed is rendered below the card so the left copy remains visible. */}
                 {contactTab === "schedule" && (
                   <div className="cal-contact-body">
                     <div className="cal-contact-tabs-inline" role="tablist" aria-label="Contact options">
@@ -753,17 +787,13 @@ export default function Portfolio() {
 
                     <p className="cal-contact-copy-note">Pick a time that works for you. I&apos;ll send a calendar invite to your email.</p>
 
-                    <div className="cal-contact-iframe-placeholder">
-                      {/* placeholder — actual embed is rendered below the card so the contact copy stays visible */}
-                    </div>
+                    <div className="cal-contact-iframe-placeholder"></div>
                   </div>
                 )}
-
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Render Cal.com embed below the contact card when schedule tab is active. This keeps the card (left copy + send message form) visible above. */}
           {contactTab === "schedule" && (
             <div className="cal-schedule-standalone">
               <div className="cal-embed-shell rounded-xl border border-[#e7e9ef] bg-white p-4">
@@ -788,13 +818,14 @@ export default function Portfolio() {
             </a>
           </footer>
         </div>
-      </section>
+      </motion.section>
     </main>
   );
 }
 
 function CategoryRow({ index, title, items }: { index: number; title: string; items: string[] }) {
   const rowRef = useRef<HTMLDivElement | null>(null);
+  const prefersReducedMotion = useReducedMotion();
   const [marquee, setMarquee] = useState(false);
 
   useEffect(() => {
@@ -936,7 +967,13 @@ function CategoryRow({ index, title, items }: { index: number; title: string; it
   };
 
   return (
-    <div className="tech-category">
+    <motion.div
+      className="tech-category"
+      initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
+      whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{ duration: 0.45, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
+    >
       <h4 className="tech-column-title">{title}</h4>
       <div ref={rowRef} className="tech-row tech-marquee-shell" id={`tech-row-${index}`}>
         {marquee ? (
@@ -948,6 +985,6 @@ function CategoryRow({ index, title, items }: { index: number; title: string; it
           <div className="tech-row-static">{items.map(renderItem)}</div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }
