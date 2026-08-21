@@ -12,7 +12,11 @@ export const metadata: Metadata = {
     "Node.js Developer",
     "Django Developer",
     "Freelance Web Developer"
-  ]
+  ],
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-32x32.png"
+  }
 };
 
 export default function RootLayout({
