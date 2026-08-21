@@ -118,11 +118,16 @@ const iconMap: Record<string, any> = {
   oracledatabase: (props: any) => <Image src="/tech/oracle.png" alt="Oracle Database" width={18} height={18} />,
   sql: (props: any) => <Image src="/tech/sql.png" alt="SQL" width={18} height={18} />,
   vscode: (props: any) => <Image src="/tech/vscode.png" alt="VS Code" width={18} height={18} />,
-  claude: (props: any) => <Image src="/tech/claude.png" alt="Claude" width={18} height={18} />,
-  openrouter: (props: any) => <Image src="/tech/openrouter.png" alt="OpenRouter" width={18} height={18} />,
-  copilot: (props: any) => <Image src="/tech/copilot.png" alt="GitHub Copilot" width={18} height={18} />,
-  githubcopilot: (props: any) => <Image src="/tech/copilot.png" alt="GitHub Copilot" width={18} height={18} />,
-  cursor: (props: any) => <Image src="/tech/cursor.png" alt="Cursor" width={18} height={18} />
+
+  // New uploaded logos (use exactly provided files)
+  nextjs: (props: any) => <Image src="/tech/nextjs.png" alt="Next.js" width={18} height={18} />,
+  openai: (props: any) => <Image src="/tech/openai.png" alt="OpenAI" width={18} height={18} />,
+  claude: (props: any) => <Image src="/tech/claude-2.png" alt="Claude" width={18} height={18} />,
+  openrouter: (props: any) => <Image src="/tech/openrouter-2.png" alt="OpenRouter" width={18} height={18} />,
+  copilot: (props: any) => <Image src="/tech/copilot-2.png" alt="GitHub Copilot" width={18} height={18} />,
+  githubcopilot: (props: any) => <Image src="/tech/copilot-2.png" alt="GitHub Copilot" width={18} height={18} />,
+  cursor: (props: any) => <Image src="/tech/cursor-2.png" alt="Cursor" width={18} height={18} />,
+  fastapi: (props: any) => <Image src="/tech/fastapi.png" alt="FastAPI" width={18} height={18} />
 };
 
 const services = [
