@@ -555,7 +555,7 @@ export default function Portfolio() {
                 },
                 {
                   title: "Backend Technologies",
-                  items: ["Node.js", "Express.js", "Django", "Flask", "REST APIs", "JWT Authentication"]
+                  items: ["Node.js", "Express.js", "Django", "Flask", "FastAPI", "WebSockets", "REST APIs", "JWT Authentication"]
                 },
                 {
                   title: "Databases",
@@ -564,6 +564,14 @@ export default function Portfolio() {
                 {
                   title: "Tools & Platforms",
                   items: ["Git", "GitHub", "Postman", "VS Code", "IntelliJ IDEA", "PyCharm", "Jupyter Notebook", "NPM", "Visual Studio"]
+                },
+                {
+                  title: "Cloud & Deployment",
+                  items: ["Microsoft Azure", "AWS"]
+                },
+                {
+                  title: "AI & Developer Tools",
+                  items: ["OpenAI", "Claude", "OpenRouter", "GitHub Copilot", "Cursor"]
                 }
               ].map((cat, idx) => (
                 <CategoryRow key={cat.title} index={idx} title={cat.title} items={cat.items} />
