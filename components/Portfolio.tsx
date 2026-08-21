@@ -502,21 +502,29 @@ export default function Portfolio() {
                 </h3>
                 <p className="mt-1 text-sm font-medium text-black">Software Development Intern</p>
               </div>
-              <span className="text-sm text-[#374151]">Internship</span>
+              <span className="text-sm font-medium text-[#374151]">Internship</span>
+            </div>
+
+            <div className="mt-6 border-l border-[#e5e7eb] pl-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#475467]">Project</p>
+              <h4 className="mt-2 text-lg font-semibold text-black">Healthcare Management System</h4>
             </div>
 
             <p className="mt-5 text-sm leading-7 text-[#1f2937]">
-              Developed a healthcare management system that allowed patients to view doctor availability,
+              Developed a healthcare management system that enabled patients to check doctor availability,
               review doctor ratings, and book appointments through a streamlined and user-friendly workflow.
-              The project focused on making healthcare access more efficient, structured, and convenient for both patients and staff.
+              The solution focused on improving healthcare accessibility, scheduling efficiency, and patient experience.
             </p>
 
-            <ul className="mt-6 grid gap-3 text-sm leading-6 text-[#1f2937] md:grid-cols-2">
-              <li>Built doctor availability and appointment booking workflows using Python and Django.</li>
-              <li>Designed responsive interfaces for patient interactions using HTML, CSS, Bootstrap, and JavaScript.</li>
-              <li>Implemented CRUD operations, validation logic, and MySQL integration for doctor and appointment data.</li>
-              <li>Worked with Git and GitHub for version control, debugging, and continuous feature improvement.</li>
-            </ul>
+            <div className="mt-6">
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#475467]">Key Responsibilities</p>
+              <ul className="mt-3 grid gap-3 text-sm leading-6 text-[#1f2937] md:grid-cols-2">
+                <li>Built doctor availability and appointment booking workflows using Python and Django.</li>
+                <li>Designed responsive interfaces for patient interactions using HTML, CSS, Bootstrap, and JavaScript.</li>
+                <li>Implemented CRUD operations, validation logic, and MySQL integration for doctor and appointment data.</li>
+                <li>Worked with Git and GitHub for version control, debugging, and continuous feature improvement.</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
