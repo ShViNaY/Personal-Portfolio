@@ -117,7 +117,7 @@ const iconMap: Record<string, any> = {
   oracle: (props: any) => <Image src="/tech/oracle.png" alt="Oracle" width={18} height={18} />,
   oracledatabase: (props: any) => <Image src="/tech/oracle.png" alt="Oracle Database" width={18} height={18} />,
   sql: (props: any) => <Image src="/tech/sql.png" alt="SQL" width={18} height={18} />,
-  vscode: (props: any) => <Image src="/tech/vscode.png" alt="VS Code" width={18} height={18} />,
+  vscode: (props: any) => <Image src="/tech/vs code.png" alt="VS Code" width={18} height={18} />,
 
   // New uploaded logos (use exactly provided files)
   nextjs: (props: any) => <Image src="/tech/nextjs.png" alt="Next.js" width={18} height={18} />,
@@ -818,7 +818,7 @@ function CategoryRow({ index, title, items }: { index: number; title: string; it
 
   const renderItem = (item: string) => {
     const raw = item.toLowerCase().replace(/\s*\(.*\)/, "");
-    const textOnlyItems = ["responsive web design", "vs code", "visual studio"];
+  const textOnlyItems = ["responsive web design", "visual studio"];
     if (textOnlyItems.includes(raw)) {
       return (
         <div key={item} className="tech-item-inline">
@@ -833,22 +833,27 @@ function CategoryRow({ index, title, items }: { index: number; title: string; it
     if (raw.includes("tailwind")) key = "tailwindcss";
     if (raw.includes("vs code") || raw.includes("visual studio code")) key = "vscode";
     if (raw.includes("intellij")) key = "intellijidea";
+    // Map longer labels that contain JWT or WebSockets to the short keys used below
+    if (raw.includes("jwt")) key = "jwt";
+    if (raw.includes("websocket")) key = "websockets";
     const Icon = iconMap[key];
     const color = techColors[item] ?? techColors[raw] ?? techColors[key] ?? "#667085";
 
-    if (!Icon) {
-      return (
-        <div key={item} className="tech-item-inline">
-          <span>{item}</span>
-        </div>
-      );
-    }
 
     // Prefer local SVG badges for some entries to ensure consistent visuals
     if (key === "javascript") {
       return (
         <div key={item} className="tech-item-inline">
-          <Image src="/tech/javascript.svg" alt="JavaScript" width={18} height={18} />
+          <Image src="/tech/js.png" alt="JavaScript" width={18} height={18} />
+          <span>{item}</span>
+        </div>
+      );
+    }
+
+    if (key === "html5") {
+      return (
+        <div key={item} className="tech-item-inline">
+          <Image src="/tech/html.png" alt="HTML5" width={18} height={18} />
           <span>{item}</span>
         </div>
       );
@@ -857,7 +862,7 @@ function CategoryRow({ index, title, items }: { index: number; title: string; it
     if (key === "oracledatabase" || key === "oracle") {
       return (
         <div key={item} className="tech-item-inline">
-          <Image src="/tech/oracle.svg" alt="Oracle Database" width={18} height={18} />
+          <Image src="/tech/oracle.png" alt="Oracle Database" width={18} height={18} />
           <span>{item}</span>
         </div>
       );
@@ -866,7 +871,16 @@ function CategoryRow({ index, title, items }: { index: number; title: string; it
     if (key === "sql") {
       return (
         <div key={item} className="tech-item-inline">
-          <Image src="/tech/sql.svg" alt="SQL" width={18} height={18} />
+          <Image src="/tech/sql.png" alt="SQL" width={18} height={18} />
+          <span>{item}</span>
+        </div>
+      );
+    }
+
+    if (key === "websockets") {
+      return (
+        <div key={item} className="tech-item-inline">
+          <Image src="/tech/websocket.webp" alt="WebSockets" width={18} height={18} />
           <span>{item}</span>
         </div>
       );
@@ -884,7 +898,7 @@ function CategoryRow({ index, title, items }: { index: number; title: string; it
     if (key === "jwt") {
       return (
         <div key={item} className="tech-item-inline">
-          <Image src="/tech/jwt.svg" alt="JWT" width={18} height={18} />
+          <Image src="/tech/jwt.png" alt="JWT" width={18} height={18} />
           <span>{item}</span>
         </div>
       );
@@ -894,7 +908,7 @@ function CategoryRow({ index, title, items }: { index: number; title: string; it
     if (key === "css3") {
       return (
         <div key={item} className="tech-item-inline">
-          <Image src="/tech/css3.svg" alt="CSS3" width={18} height={18} />
+          <Image src="/tech/css.png" alt="CSS3" width={18} height={18} />
           <span>{item}</span>
         </div>
       );
