@@ -371,7 +371,18 @@ export default function Portfolio() {
               </div>
             </div>
 
-            {/* Personal badges removed per user request */}
+            <div className="flex items-center justify-center md:justify-end">
+              <div className="relative w-full max-w-[420px] overflow-hidden rounded-[22px] border border-[#e7e9ef] bg-[#f5f6fa] shadow-sm">
+                <div className="relative aspect-[4/3] w-full">
+                  <Image
+                    src="/images/About%20Me.png"
+                    alt="About Me illustration"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
