@@ -128,7 +128,8 @@ const iconMap: Record<string, any> = {
   copilot: (props: any) => <Image src="/tech/copilot-2.png" alt="GitHub Copilot" width={18} height={18} />,
   githubcopilot: (props: any) => <Image src="/tech/copilot-2.png" alt="GitHub Copilot" width={18} height={18} />,
   cursor: (props: any) => <Image src="/tech/cursor-2.png" alt="Cursor" width={18} height={18} />,
-  fastapi: (props: any) => <Image src="/tech/fastapi.png" alt="FastAPI" width={18} height={18} />
+  fastapi: (props: any) => <Image src="/tech/fastapi.png" alt="FastAPI" width={18} height={18} />,
+  framermotion: (props: any) => <Image src="/tech/framermotion.webp" alt="Framer Motion" width={18} height={18} />
 };
 
 const services = [
@@ -607,7 +608,7 @@ export default function Portfolio() {
               {[
                 {
                   title: "FRONTEND & FULL-STACK TECHNOLOGIES",
-                  items: ["React.js", "JavaScript", "HTML5", "CSS3", "Bootstrap", "Tailwind CSS", "Responsive Web Design", "Next.js"]
+                  items: ["React.js", "JavaScript", "HTML5", "CSS3", "Bootstrap", "Tailwind CSS", "Responsive Web Design", "Next.js", "Framer Motion"]
                 },
                 {
                   title: "Backend Technologies",
