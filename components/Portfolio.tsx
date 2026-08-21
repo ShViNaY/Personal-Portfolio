@@ -147,6 +147,24 @@ const projects = [
     live: ""
   },
   {
+    title: "Agency.ai",
+    description:
+      "A responsive digital agency landing page built with React and Vite, featuring service sections, portfolio highlights, team profiles, and lead-generation contact flows.",
+    image: "/images/Agency-ai.png",
+    tags: ["React", "Vite", "JavaScript", "Tailwind CSS", "Framer Motion", "React Hot Toast", "ESLint"],
+    github: "https://github.com/ShViNaY/Agency.Ai",
+    live: ""
+  },
+  {
+    title: "Blog Creation",
+    description:
+      "A Django-powered blog application with user auth, profile management, post CRUD, password reset flow, pagination, and admin-based content moderation.",
+    image: "/images/BlogCreation.png",
+    tags: ["Python", "Django", "SQLite", "HTML5", "CSS3", "JavaScript", "Bootstrap", "Pillow"],
+    github: "https://github.com/ShViNaY/Blog_creation-",
+    live: ""
+  },
+  {
     title: "Book Recommendation System",
     description:
       "A machine-learning based book recommendation system using collaborative filtering, popularity-based and hybrid approaches.",
