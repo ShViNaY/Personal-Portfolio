@@ -144,7 +144,7 @@ const projects = [
     image: "/images/chess-project.svg",
     tags: ["React", "TypeScript", "Node.js", "WebSockets", "PostgreSQL"],
     github: "https://github.com/ShViNaY/Chess.app",
-    live: ""
+    live: "https://chess-app-s8cf.onrender.com/"
   },
   {
     title: "Agency.ai",
@@ -153,7 +153,7 @@ const projects = [
     image: "/images/Agency-ai.png",
     tags: ["React", "Vite", "JavaScript", "Tailwind CSS", "Framer Motion", "React Hot Toast", "ESLint"],
     github: "https://github.com/ShViNaY/Agency.Ai",
-    live: ""
+    live: "https://agency-ai-green.vercel.app/"
   },
   {
     title: "Blog Creation",
@@ -162,7 +162,7 @@ const projects = [
     image: "/images/BlogCreation.png",
     tags: ["Python", "Django", "SQLite", "HTML5", "CSS3", "JavaScript", "Bootstrap", "Pillow"],
     github: "https://github.com/ShViNaY/Blog_creation-",
-    live: ""
+    live: "https://blogflow-s6wp.onrender.com"
   },
   {
     title: "Book Recommendation System",
