@@ -564,8 +564,8 @@ export default function Portfolio() {
             <div className="tech-list">
               {[
                 {
-                  title: "Frontend Technologies",
-                  items: ["React.js", "JavaScript", "HTML5", "CSS3", "Bootstrap", "Tailwind CSS", "Responsive Web Design"]
+                  title: "FRONTEND & FULL-STACK TECHNOLOGIES",
+                  items: ["React.js", "JavaScript", "HTML5", "CSS3", "Bootstrap", "Tailwind CSS", "Responsive Web Design", "Next.js"]
                 },
                 {
                   title: "Backend Technologies",
