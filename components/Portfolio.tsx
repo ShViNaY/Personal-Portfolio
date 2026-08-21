@@ -818,7 +818,7 @@ function CategoryRow({ index, title, items }: { index: number; title: string; it
 
   const renderItem = (item: string) => {
     const raw = item.toLowerCase().replace(/\s*\(.*\)/, "");
-  const textOnlyItems = ["responsive web design", "visual studio"];
+  const textOnlyItems = ["responsive web design"];
     if (textOnlyItems.includes(raw)) {
       return (
         <div key={item} className="tech-item-inline">
@@ -854,6 +854,15 @@ function CategoryRow({ index, title, items }: { index: number; title: string; it
       return (
         <div key={item} className="tech-item-inline">
           <Image src="/tech/html.png" alt="HTML5" width={18} height={18} />
+          <span>{item}</span>
+        </div>
+      );
+    }
+
+    if (key === "visualstudio") {
+      return (
+        <div key={item} className="tech-item-inline">
+          <Image src="/tech/visualstudio.png" alt="Visual Studio" width={18} height={18} />
           <span>{item}</span>
         </div>
       );
