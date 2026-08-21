@@ -485,12 +485,12 @@ export default function Portfolio() {
       <section id="experience" className="section pt-0">
         <div className="container">
           <div className="pill pill-lg">Experience</div>
-          <h2 className="section-title mt-3">Software Development Intern</h2>
+          <h2 className="section-title mt-3 text-black">Software Development Intern</h2>
 
           <div className="card mt-8 p-6 md:p-8">
-              <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
+            <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
               <div>
-                <h3 className="text-xl font-bold">
+                <h3 className="text-xl font-bold text-black">
                   <a
                     href="https://www.websmartindia.com/"
                     target="_blank"
@@ -500,16 +500,22 @@ export default function Portfolio() {
                     WebsmartIndia <ExternalLink size={15} />
                   </a>
                 </h3>
-                <p className="mt-1 text-sm font-medium text-[#5b5ce2]">Software Development Intern</p>
+                <p className="mt-1 text-sm font-medium text-black">Software Development Intern</p>
               </div>
-              <span className="text-sm text-[#667085]">Internship</span>
+              <span className="text-sm text-[#374151]">Internship</span>
             </div>
 
-            <ul className="mt-6 grid gap-3 text-sm leading-6 text-[#667085] md:grid-cols-2">
-              <li>Developed and maintained web application features using Python and Django.</li>
-              <li>Built responsive interfaces using HTML, CSS, Bootstrap and JavaScript.</li>
-              <li>Implemented REST APIs, CRUD operations and MySQL database integration.</li>
-              <li>Worked with Git and GitHub and participated in debugging and software development practices.</li>
+            <p className="mt-5 text-sm leading-7 text-[#1f2937]">
+              Developed a healthcare management system that allowed patients to view doctor availability,
+              review doctor ratings, and book appointments through a streamlined and user-friendly workflow.
+              The project focused on making healthcare access more efficient, structured, and convenient for both patients and staff.
+            </p>
+
+            <ul className="mt-6 grid gap-3 text-sm leading-6 text-[#1f2937] md:grid-cols-2">
+              <li>Built doctor availability and appointment booking workflows using Python and Django.</li>
+              <li>Designed responsive interfaces for patient interactions using HTML, CSS, Bootstrap, and JavaScript.</li>
+              <li>Implemented CRUD operations, validation logic, and MySQL integration for doctor and appointment data.</li>
+              <li>Worked with Git and GitHub for version control, debugging, and continuous feature improvement.</li>
             </ul>
           </div>
         </div>
