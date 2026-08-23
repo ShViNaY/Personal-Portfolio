@@ -8,15 +8,13 @@ https://vinaysh-portfolio.vercel.app/
 
 ## 📸 Preview
 
-<p align="center">
-  <img src="public/screenshots/home.png" alt="Portfolio Home" width="48%" />
-  <img src="public/screenshots/projects.png" alt="Projects" width="48%" />
-</p>
+![Portfolio Home](public/screenshots/Home.png)
 
-<p align="center">
-  <img src="public/screenshots/tech-stack.png" alt="Tech Stack" width="48%" />
-  <img src="public/screenshots/contact.png" alt="Contact" width="48%" />
-</p>
+![Projects](public/screenshots/Projects.png)
+
+![Tech Stack](public/screenshots/Tech%20Stack.png)
+
+![Contact](public/screenshots/Contact.png)
 
 ## ✨ Features
 
