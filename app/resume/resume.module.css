@@ -1,0 +1,63 @@
+.resumeShell {
+  position: relative;
+  padding-top: 0.75rem; /* small breathing room */
+  padding-bottom: 5rem; /* increased bottom space to avoid overlap */
+}
+
+.downloadBtn {
+  position: absolute;
+  right: 1.5rem;
+  top: 1.5rem;
+  z-index: 30;
+  /* subtle theme-matching styling to complement existing .btn classes */
+  background: white;
+  color: #5b5ce2;
+  border: 1px solid #e7e9ef;
+  box-shadow: 0 10px 30px rgba(91, 92, 226, 0.08);
+  padding: 0.6rem 0.8rem;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+/* keep the text small on mobile and shrink spacing while keeping visibility */
+@media (max-width: 640px) {
+  .downloadBtn {
+    right: 1rem;
+    top: 1rem;
+    padding: 0.45rem 0.55rem;
+  }
+}
+
+.iframeWrap {
+  margin-top: 4rem; /* ensure iframe sits well below the button and doesn't overlap */
+  margin-bottom: 3.5rem; /* extra breathing room at the bottom */
+}
+
+/* make iframe fully responsive and visually consistent with portfolio cards */
+.resumeIframe {
+  display: block;
+  width: 100%;
+  height: 72vh;
+  border: 1px solid #e7e9ef;
+  border-radius: 8px;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .resumeIframe {
+    height: 86vh;
+  }
+}
+
+/* ensure the page has extra safe area on small devices and large screens */
+@media (max-width: 640px) {
+  .resumeShell {
+    padding-bottom: 5.5rem;
+  }
+}
+@media (min-width: 1280px) {
+  .resumeShell {
+    padding-bottom: 6rem;
+  }
+}

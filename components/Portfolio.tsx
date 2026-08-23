@@ -231,6 +231,7 @@ export default function Portfolio() {
 
   const FORMSPREE_ENDPOINT = "https://formspree.io/f/mljrnqvp";
   const RESUME_PATH = "/resume/Vinay_SH_Resume.pdf";
+  const RESUME_PAGE = "/resume";
 
   const handleContactSubmit = async (e: any) => {
     e.preventDefault();
@@ -279,7 +280,7 @@ export default function Portfolio() {
             <a className="nav-link" href="#services">Services</a>
             <a className="nav-link" href="#projects">Projects</a>
             <a className="nav-link" href="#experience">Experience</a>
-            <a className="nav-link" href={RESUME_PATH} target="_blank" rel="noreferrer">Resume</a>
+            <a className="nav-link" href={RESUME_PAGE} target="_blank" rel="noreferrer">Resume</a>
             <a className="nav-link" href="#contact">Contact</a>
           </nav>
 
@@ -324,7 +325,7 @@ export default function Portfolio() {
                 </motion.a>
               ))}
               <a
-                href={RESUME_PATH}
+                href={RESUME_PAGE}
                 target="_blank"
                 rel="noreferrer"
                 onClick={closeMenu}
@@ -362,7 +363,7 @@ export default function Portfolio() {
               <a href="#projects" className="btn btn-primary">
                 View My Work <ArrowRight size={15} />
               </a>
-              <a href={RESUME_PATH} target="_blank" rel="noreferrer" className="btn btn-secondary">
+              <a href={RESUME_PAGE} target="_blank" rel="noreferrer" className="btn btn-secondary">
                 View Resume <ExternalLink size={15} />
               </a>
               <a href="#contact" className="btn btn-secondary">
