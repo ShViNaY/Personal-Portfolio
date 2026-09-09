@@ -159,6 +159,15 @@ const services = [
 
 const projects = [
   {
+    title: "ReportPilot",
+    description:
+      "Multi-tenant marketing analytics platform for agencies to track campaigns, visualize performance, manage team access, and share secure client reporting portals.",
+    image: "/images/reportpilot.png",
+    tags: ["Next.js", "React", "TypeScript", "Supabase", "PostgreSQL", "Tailwind CSS", "Recharts", "Framer Motion"],
+    github: "https://github.com/ShViNaY/ReportPilot",
+    live: "https://report-pilot-omega.vercel.app/"
+  },
+  {
     title: "Real-Time Multiplayer Chess Platform",
     description:
       "A full-stack multiplayer chess platform with live gameplay, matchmaking, chat, timers and Elo rating functionality.",
