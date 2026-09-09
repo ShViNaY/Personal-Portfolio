@@ -129,6 +129,7 @@ const iconMap: Record<string, any> = {
   githubcopilot: (props: any) => <Image src="/tech/copilot-2.png" alt="GitHub Copilot" width={18} height={18} />,
   cursor: (props: any) => <Image src="/tech/cursor-2.png" alt="Cursor" width={18} height={18} />,
   fastapi: (props: any) => <Image src="/tech/fastapi.png" alt="FastAPI" width={18} height={18} />,
+  supabase: (props: any) => <Image src="/tech/supabase.png" alt="Supabase" width={18} height={18} />,
   framermotion: (props: any) => <Image src="/tech/framermotion.webp" alt="Framer Motion" width={18} height={18} />
 };
 
@@ -622,7 +623,7 @@ export default function Portfolio() {
                 },
                 {
                   title: "Backend Technologies",
-                  items: ["Node.js", "Express.js", "Django", "Flask", "FastAPI", "WebSockets", "REST APIs", "JWT Authentication"]
+                  items: ["Node.js", "Express.js", "Django", "Flask", "FastAPI", "WebSockets", "REST APIs", "JWT Authentication", "Supabase"]
                 },
                 {
                   title: "Databases",
