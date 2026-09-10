@@ -691,7 +691,7 @@ export default function Portfolio() {
                       <Github size={17} />
                     </a>
                     <a
-                      href="https://x.com/Sh__vinay"
+                      href="https://x.com/24vin_i"
                       target="_blank"
                       rel="noreferrer"
                       aria-label="X"
