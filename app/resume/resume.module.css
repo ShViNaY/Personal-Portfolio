@@ -1,63 +1,63 @@
 .resumeShell {
   position: relative;
-  padding-top: 0.75rem; /* small breathing room */
-  padding-bottom: 5rem; /* increased bottom space to avoid overlap */
+  padding-top: 1.5rem;
+  padding-bottom: 4rem;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .downloadBtn {
   position: absolute;
-  right: 1.5rem;
+  right: 0;
   top: 1.5rem;
   z-index: 30;
-  /* subtle theme-matching styling to complement existing .btn classes */
-  background: white;
-  color: #5b5ce2;
-  border: 1px solid #e7e9ef;
-  box-shadow: 0 10px 30px rgba(91, 92, 226, 0.08);
-  padding: 0.6rem 0.8rem;
-  border-radius: 12px;
+  background: #0f172a;
+  color: #ffffff;
+  border: 1px solid #0f172a;
+  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  font-size: 13px;
   font-weight: 600;
+  transition: all 180ms ease;
 }
 
-/* keep the text small on mobile and shrink spacing while keeping visibility */
+.downloadBtn:hover {
+  background: #1e293b;
+  border-color: #1e293b;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px -2px rgba(15, 23, 42, 0.15);
+}
+
 @media (max-width: 640px) {
   .downloadBtn {
-    right: 1rem;
+    right: 0;
     top: 1rem;
-    padding: 0.45rem 0.55rem;
+    padding: 0.45rem 0.75rem;
   }
 }
 
 .iframeWrap {
-  margin-top: 4rem; /* ensure iframe sits well below the button and doesn't overlap */
-  margin-bottom: 3.5rem; /* extra breathing room at the bottom */
+  margin-top: 4.5rem;
+  margin-bottom: 2rem;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.05);
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
 }
 
-/* make iframe fully responsive and visually consistent with portfolio cards */
 .resumeIframe {
   display: block;
   width: 100%;
-  height: 72vh;
-  border: 1px solid #e7e9ef;
-  border-radius: 8px;
+  height: 75vh;
+  border: none;
   background: #fff;
-  box-sizing: border-box;
 }
 
 @media (min-width: 768px) {
   .resumeIframe {
     height: 86vh;
-  }
-}
-
-/* ensure the page has extra safe area on small devices and large screens */
-@media (max-width: 640px) {
-  .resumeShell {
-    padding-bottom: 5.5rem;
-  }
-}
-@media (min-width: 1280px) {
-  .resumeShell {
-    padding-bottom: 6rem;
   }
 }

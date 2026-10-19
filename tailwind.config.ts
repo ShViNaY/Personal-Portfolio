@@ -7,10 +7,26 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-geist-sans)", "system-ui", "-apple-system", "sans-serif"],
+        mono: ["var(--font-geist-mono)", "ui-monospace", "monospace"]
+      },
       colors: {
-        accent: "#5B5CE2",
-        ink: "#151923",
-        muted: "#667085"
+        accent: {
+          DEFAULT: "#4f46e5",
+          hover: "#4338ca",
+          soft: "#eef2ff"
+        },
+        ink: {
+          DEFAULT: "#0f172a",
+          secondary: "#334155",
+          muted: "#64748b"
+        },
+        surface: {
+          DEFAULT: "#ffffff",
+          subtle: "#f8fafc",
+          hover: "#f1f5f9"
+        }
       }
     }
   },

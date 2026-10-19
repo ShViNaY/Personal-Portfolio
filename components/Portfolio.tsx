@@ -22,20 +22,18 @@ import {
   SiNpm
 } from "@icons-pack/react-simple-icons";
 
-
 import Image from "next/image";
 import {
   ArrowRight,
   BriefcaseBusiness,
+  CheckCircle2,
   ChevronDown,
   ChevronUp,
   Code2,
   ExternalLink,
   Github,
-  GraduationCap,
   Mail,
   Menu,
-  MessageCircle,
   Wrench,
   X,
   Linkedin
@@ -156,8 +154,6 @@ const services = [
   }
 ];
 
-// aboutCards removed — personal badge block intentionally omitted
-
 const projects = [
   {
     title: "ReportPilot",
@@ -213,14 +209,14 @@ export default function Portfolio() {
   const closeMenu = () => setMobileOpen(false);
   const navMotion = prefersReducedMotion
     ? {}
-    : { initial: { opacity: 0, y: -14 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] as const } };
+    : { initial: { opacity: 0, y: -12 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] as const } };
   const fadeUp = (delay = 0, duration = 0.5) =>
     prefersReducedMotion
       ? {}
       : {
-          initial: { opacity: 0, y: 18 },
+          initial: { opacity: 0, y: 16 },
           whileInView: { opacity: 1, y: 0 },
-          viewport: { once: true, amount: 0.2 },
+          viewport: { once: true, amount: 0.15 },
           transition: { duration, delay, ease: [0.22, 1, 0.36, 1] as const }
         };
 
@@ -278,14 +274,25 @@ export default function Portfolio() {
   };
 
   return (
-    <main>
-      <motion.header {...navMotion} className="sticky top-0 z-50 border-b border-[#e7e9ef]/90 bg-[#fbfbfd]/95 backdrop-blur-sm">
-        <div className="container flex h-[72px] items-center justify-between">
-          <a href="#home" className="text-[17px] font-bold tracking-[-0.02em]">
-            VINAY SH
+    <main className="min-h-screen">
+      {/* Sticky Header with subtle backdrop blur and hairline border */}
+      <motion.header
+        {...navMotion}
+        className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/85 backdrop-blur-md"
+      >
+        <div className="container flex h-[68px] items-center justify-between">
+          <a href="#home" className="group flex items-center gap-2.5">
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-900 font-mono text-xs font-bold text-white shadow-sm transition-transform group-hover:scale-105">
+              V
+            </span>
+            <div className="flex flex-col">
+              <span className="text-[15px] font-bold tracking-tight text-slate-900">
+                VINAY SH
+              </span>
+            </div>
           </a>
 
-          <nav className="hidden items-center gap-8 md:flex">
+          <nav className="hidden items-center gap-7 md:flex">
             <a className="nav-link" href="#about">About</a>
             <a className="nav-link" href="#services">Services</a>
             <a className="nav-link" href="#projects">Projects</a>
@@ -294,16 +301,18 @@ export default function Portfolio() {
             <a className="nav-link" href="#contact">Contact</a>
           </nav>
 
-          <a href="#contact" className="btn btn-primary hidden md:inline-flex">
-            Work With Me <ArrowRight size={15} />
-          </a>
+          <div className="hidden items-center gap-3 md:flex">
+            <a href="#contact" className="btn btn-primary text-xs">
+              Work With Me <ArrowRight size={14} />
+            </a>
+          </div>
 
           <button
             aria-label="Open menu"
-            className="rounded-lg border border-[#e7e9ef] p-2 md:hidden"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-700 transition hover:bg-slate-100 md:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
-            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+            {mobileOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
 
@@ -312,7 +321,7 @@ export default function Portfolio() {
             initial={prefersReducedMotion ? false : { opacity: 0, y: -8 }}
             animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
             exit={prefersReducedMotion ? undefined : { opacity: 0, y: -8 }}
-            className="border-t border-[#e7e9ef] bg-white md:hidden"
+            className="border-t border-slate-200 bg-white shadow-lg md:hidden"
           >
             <nav className="container flex flex-col py-3">
               {[
@@ -328,8 +337,8 @@ export default function Portfolio() {
                   onClick={closeMenu}
                   initial={prefersReducedMotion ? false : { opacity: 0, x: -10 }}
                   animate={prefersReducedMotion ? undefined : { opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05, duration: 0.2 }}
-                  className="border-b border-[#f0f1f4] py-4 text-sm font-medium"
+                  transition={{ delay: index * 0.04, duration: 0.2 }}
+                  className="border-b border-slate-100 py-3.5 text-sm font-medium text-slate-700 hover:text-slate-950"
                 >
                   {label}
                 </motion.a>
@@ -339,138 +348,188 @@ export default function Portfolio() {
                 target="_blank"
                 rel="noreferrer"
                 onClick={closeMenu}
-                className="border-b border-[#f0f1f4] py-4 text-sm font-medium"
+                className="border-b border-slate-100 py-3.5 text-sm font-medium text-slate-700 hover:text-slate-950"
               >
                 Resume
               </a>
-              <a href="#contact" onClick={closeMenu} className="btn btn-primary mt-4">
-                Work With Me <ArrowRight size={15} />
+              <a href="#contact" onClick={closeMenu} className="btn btn-primary mt-4 mb-2 text-xs">
+                Work With Me <ArrowRight size={14} />
               </a>
             </nav>
           </motion.div>
         )}
       </motion.header>
 
-      <motion.section id="home" className="container scroll-mt-20 pt-10 md:pt-14" {...fadeUp(0, 0.55)}>
-        <div className="grid overflow-hidden rounded-[22px] border border-[#e7e9ef] bg-white lg:grid-cols-[0.92fr_1.08fr]">
-          <motion.div className="flex flex-col justify-center p-7 sm:p-10 lg:p-14" initial={prefersReducedMotion ? false : { opacity: 0, x: -18 }} animate={prefersReducedMotion ? undefined : { opacity: 1, x: 0 }} transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}>
-            <div className="pill pill-lg">
-              <span className="pill-dot" />
-              Available for freelance work
+      {/* Hero Section */}
+      <motion.section id="home" className="container pt-8 md:pt-12" {...fadeUp(0, 0.5)}>
+        <div className="overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-[0_1px_3px_rgba(15,23,42,0.03)] lg:grid lg:grid-cols-[1.15fr_0.85fr]">
+          <motion.div
+            className="flex flex-col justify-center p-7 sm:p-10 lg:p-12 xl:p-14"
+            initial={prefersReducedMotion ? false : { opacity: 0, x: -16 }}
+            animate={prefersReducedMotion ? undefined : { opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="flex items-center gap-2">
+              <span className="pill-status">
+                <span className="status-dot-pulse">
+                  <span />
+                  <span />
+                </span>
+                Available for freelance work
+              </span>
             </div>
 
-            <h1 className="mt-5 max-w-[620px] text-[clamp(36px,5vw,56px)] font-bold leading-[1.02] tracking-[-0.055em]">
-              Hi, I&apos;m <span className="text-[#5b5ce2]">Vinay.</span>
+            <h1 className="mt-5 text-[clamp(32px,4.5vw,52px)] font-bold leading-[1.08] tracking-tight text-slate-900">
+              Hi, I&apos;m <span className="text-indigo-600">Vinay.</span>
               <br />
-              I build websites &amp; web applications that help businesses grow.
+              <span className="text-slate-800">I build websites &amp; web applications that help businesses grow.</span>
             </h1>
 
-            <p className="mt-6 max-w-[520px] text-[15px] leading-6 text-[#667085]">
+            <p className="mt-5 max-w-[520px] text-[15px] sm:text-base leading-relaxed text-slate-600">
               Full-Stack Web Developer specializing in React, Node.js, Express and Django.
             </p>
 
-            <motion.div className="mt-7 flex flex-wrap gap-3" initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }} animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }} transition={{ duration: 0.45, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}>
-              <a href="#projects" className="btn btn-primary">
-                View My Work <ArrowRight size={15} />
+            <motion.div
+              className="mt-8 flex flex-wrap items-center gap-3"
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
+              animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <a href="#projects" className="btn btn-primary text-xs sm:text-sm">
+                View My Work <ArrowRight size={14} />
               </a>
-              <a href={RESUME_PAGE} target="_blank" rel="noreferrer" className="btn btn-secondary">
-                View Resume <ExternalLink size={15} />
+              <a href={RESUME_PAGE} target="_blank" rel="noreferrer" className="btn btn-secondary text-xs sm:text-sm">
+                View Resume <ExternalLink size={14} />
               </a>
-              <a href="#contact" className="btn btn-secondary">
-                Work With Me <ArrowRight size={15} />
+              <a href="#contact" className="btn btn-secondary text-xs sm:text-sm">
+                Work With Me
               </a>
             </motion.div>
           </motion.div>
 
-          <motion.div className="relative min-h-[320px] overflow-hidden bg-[#f3f4f8] lg:min-h-[440px]" initial={prefersReducedMotion ? false : { opacity: 0, x: 20 }} animate={prefersReducedMotion ? undefined : { opacity: 1, x: 0 }} transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}>
-            <Image
-              src="/images/anime-developer.svg"
-              alt="Anime-style developer working at a desk"
-              fill
-              priority
-              className="object-cover"
-            />
-          </motion.div>
-        </div>
-      </motion.section>
-
-      <motion.section id="about" className="section" {...fadeUp(0.05, 0.55)}>
-        <div className="container">
-          <motion.div className="card grid gap-8 p-7 md:grid-cols-[1.25fr_1fr] md:p-10" initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }} whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}>
-            <div>
-              <div className="pill pill-lg">About Me</div>
-              <h2 className="section-title mt-3">
-                A full-stack developer focused on building practical web solutions.
-              </h2>
-
-              <div className="mt-5 space-y-3 text-[15px] leading-7 text-[#667085]">
-                <p>
-                  I&apos;m a full-stack web developer focused on building clean,
-                  responsive and practical web solutions.
-                </p>
-
-                <p>
-                  I work with React, Node.js, Express, Django, JavaScript, Python and
-                  relational databases to build websites, web applications and REST APIs.
-                </p>
-
-                <p>
-                  <span className="about-highlight">I enjoy taking an idea or requirement and turning it into a working product from frontend development and backend logic to database integration and deployment.</span>
-                </p>
-
-                <p>
-                  If you have a project in mind, I&apos;d be happy to discuss it.
-                </p>
+          <motion.div
+            className="relative flex min-h-[320px] items-center justify-center border-t border-slate-100 bg-[#f8fafc] p-6 lg:min-h-full lg:border-l lg:border-t-0 lg:p-10"
+            initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.98 }}
+            animate={prefersReducedMotion ? undefined : { opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="relative w-full max-w-[440px] overflow-hidden rounded-xl border border-slate-200/90 bg-white p-2 shadow-sm">
+              <div className="flex items-center justify-between border-b border-slate-100 px-3 py-2">
+                <div className="flex items-center gap-1.5">
+                  <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
+                </div>
+                <span className="font-mono text-[11px] text-slate-400">vinay.workspace</span>
+              </div>
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-slate-50">
+                <Image
+                  src="/images/anime-developer.svg"
+                  alt="Anime-style developer working at a desk"
+                  fill
+                  priority
+                  className="object-cover"
+                />
               </div>
             </div>
-
-            <div className="flex items-center justify-center md:justify-end">
-              <motion.div className="relative w-full max-w-[420px] overflow-hidden rounded-[22px] border border-[#e7e9ef] bg-[#f5f6fa] shadow-sm" initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.98 }} whileInView={prefersReducedMotion ? undefined : { opacity: 1, scale: 1 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}>
-                <div className="relative aspect-[4/3] w-full">
-                  <Image
-                    src="/images/About%20Me.png"
-                    alt="About Me illustration"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </motion.div>
-            </div>
           </motion.div>
         </div>
       </motion.section>
 
-      <motion.section id="services" className="section pt-0" {...fadeUp(0.08, 0.55)}>
+      {/* About Section */}
+      <motion.section id="about" className="section" {...fadeUp(0.05, 0.5)}>
         <div className="container">
-          <div className="pill pill-lg">Services</div>
-          <h2 className="section-title mt-3">What I can help you with</h2>
-          <p className="section-subtitle">Focused development services for practical web projects.</p>
+          <div className="card overflow-hidden p-7 sm:p-10 lg:p-12">
+            <div className="grid gap-10 lg:grid-cols-[1.25fr_1fr] lg:items-center">
+              <div>
+                <div className="pill">01 · About Me</div>
+                <h2 className="section-title mt-4">
+                  A full-stack developer focused on building practical web solutions.
+                </h2>
 
-          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-slate-600">
+                  <p>
+                    I&apos;m a full-stack web developer focused on building clean,
+                    responsive and practical web solutions.
+                  </p>
+
+                  <p>
+                    I work with React, Node.js, Express, Django, JavaScript, Python and
+                    relational databases to build websites, web applications and REST APIs.
+                  </p>
+
+                  <div className="about-highlight text-slate-800">
+                    I enjoy taking an idea or requirement and turning it into a working product from frontend development and backend logic to database integration and deployment.
+                  </div>
+
+                  <p>
+                    If you have a project in mind, I&apos;d be happy to discuss it.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-center lg:justify-end">
+                <div className="relative w-full max-w-[400px] overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 p-2 shadow-sm">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl">
+                    <Image
+                      src="/images/About%20Me.png"
+                      alt="About Me illustration"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Services Section */}
+      <motion.section id="services" className="section" {...fadeUp(0.06, 0.5)}>
+        <div className="container">
+          <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
+            <div>
+              <div className="pill">02 · Services</div>
+              <h2 className="section-title mt-3">What I can help you with</h2>
+              <p className="section-subtitle">Focused development services for practical web projects.</p>
+            </div>
+          </div>
+
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {services.map(({ icon: Icon, title, description }, index) => (
               <motion.div
                 key={title}
-                className="card p-6 transition hover:-translate-y-0.5 hover:border-[#cfd2dc]"
-                initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
+                className="group relative flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-slate-300 hover:shadow-md"
+                initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
                 whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.45, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={prefersReducedMotion ? undefined : { y: -6, transition: { duration: 0.2 } }}
+                transition={{ duration: 0.45, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
               >
-                <Icon size={25} className="text-[#5b5ce2]" />
-                <h3 className="mt-5 text-[16px] font-bold">{title}</h3>
-                <p className="mt-3 text-sm leading-6 text-[#667085]">{description}</p>
+                <div>
+                  <div className="flex items-center justify-between">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 transition-colors group-hover:bg-indigo-600 group-hover:text-white">
+                      <Icon size={20} />
+                    </span>
+                    <span className="font-mono text-xs font-semibold text-slate-400">
+                      0{index + 1}
+                    </span>
+                  </div>
+                  <h3 className="mt-5 text-base font-bold text-slate-900">{title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{description}</p>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </motion.section>
 
-      <motion.section id="projects" className="section pt-0" {...fadeUp(0.08, 0.55)}>
+      {/* Projects Section */}
+      <motion.section id="projects" className="section" {...fadeUp(0.06, 0.5)}>
         <div className="container">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <div className="pill pill-lg">Projects</div>
+              <div className="pill">03 · Projects</div>
               <h2 className="section-title mt-3">Some things I&apos;ve built</h2>
               <p className="section-subtitle">Real projects demonstrating my development work.</p>
             </div>
@@ -478,59 +537,63 @@ export default function Portfolio() {
               href="https://github.com/ShViNaY/"
               target="_blank"
               rel="noreferrer"
-              className="text-sm font-semibold text-[#5b5ce2]"
+              className="inline-flex items-center gap-1.5 font-mono text-xs font-semibold text-indigo-600 hover:text-indigo-700 hover:underline"
             >
-              View all on GitHub ↗
+              View all on GitHub <ArrowRight size={13} />
             </a>
           </div>
 
-          <div className="mt-8 grid gap-5 md:grid-cols-2">
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
             {visibleProjects.map((project, index) => (
               <motion.article
                 key={project.title}
-                className="card overflow-hidden"
-                initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
+                className="card group overflow-hidden"
+                initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
                 whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.45, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={prefersReducedMotion ? undefined : { y: -6, transition: { duration: 0.2 } }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.45, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
               >
-                <div className="relative aspect-[16/8.5] bg-[#f1f2f6]">
+                <div className="relative aspect-[16/9] w-full overflow-hidden border-b border-slate-100 bg-slate-100">
                   <Image
                     src={project.image}
                     alt={`${project.title} preview`}
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                   />
+                  <div className="absolute top-3 left-3">
+                    <span className="rounded-md border border-slate-200/80 bg-white/95 px-2.5 py-1 font-mono text-[11px] font-semibold text-slate-700 shadow-sm backdrop-blur-sm">
+                      0{index + 1}
+                    </span>
+                  </div>
                 </div>
 
                 <div className="p-6">
-                  <h3 className="text-[20px] font-bold tracking-[-0.02em]">{project.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-[#667085]">{project.description}</p>
+                  <h3 className="text-lg font-bold tracking-tight text-slate-900">{project.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{project.description}</p>
 
-                  <div className="mt-4 flex flex-wrap gap-2">
+                  <div className="mt-4 flex flex-wrap gap-1.5">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-md border border-[#e7e9ef] bg-[#fafafd] px-2.5 py-1 text-xs text-[#596273]"
+                        className="rounded-md border border-slate-200/80 bg-slate-50 px-2.5 py-0.5 font-mono text-[11px] font-medium text-slate-600"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  <div className="mt-6 flex gap-3">
+                  <div className="mt-6 flex items-center gap-3 border-t border-slate-100 pt-5">
                     {project.live ? (
-                      <a className="btn btn-primary" href={project.live} target="_blank" rel="noreferrer">
-                        Live Demo <ExternalLink size={14} />
+                      <a className="btn btn-primary text-xs" href={project.live} target="_blank" rel="noreferrer">
+                        Live Demo <ExternalLink size={13} />
                       </a>
                     ) : (
-                      <span className="btn cursor-default bg-[#f7f7f9] text-[#98a0ad]">
+                      <span className="btn cursor-default bg-slate-50 text-slate-400 border-slate-200 text-xs">
                         Live Demo — Coming Soon
                       </span>
                     )}
-                    <a className="btn btn-secondary" href={project.github} target="_blank" rel="noreferrer">
-                      GitHub <Github size={14} />
+                    <a className="btn btn-secondary text-xs" href={project.github} target="_blank" rel="noreferrer">
+                      GitHub <Github size={13} />
                     </a>
                   </div>
                 </div>
@@ -539,21 +602,21 @@ export default function Portfolio() {
           </div>
 
           {hasMoreProjects && (
-            <div className="mt-6 flex justify-center">
+            <div className="mt-8 flex justify-center">
               <button
                 type="button"
                 onClick={() => setShowAllProjects((prev) => !prev)}
-                className="inline-flex items-center gap-2 rounded-full border border-[#dfe3ea] bg-white px-4 py-2 text-sm font-semibold text-[#5b5ce2] shadow-sm transition hover:border-[#cfd2dc] hover:bg-[#f8f8ff]"
+                className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2.5 font-mono text-xs font-semibold text-slate-800 shadow-sm transition hover:border-slate-300 hover:bg-slate-50"
               >
                 {showAllProjects ? (
                   <>
                     <span>View Less</span>
-                    <ChevronUp size={16} />
+                    <ChevronUp size={14} />
                   </>
                 ) : (
                   <>
-                    <span>View More</span>
-                    <ChevronDown size={16} />
+                    <span>View More Projects</span>
+                    <ChevronDown size={14} />
                   </>
                 )}
               </button>
@@ -562,59 +625,72 @@ export default function Portfolio() {
         </div>
       </motion.section>
 
-      <section id="experience" className="section pt-0">
+      {/* Experience Section */}
+      <section id="experience" className="section">
         <div className="container">
-          <div className="pill pill-lg">Experience</div>
-          <h2 className="section-title mt-3 text-black">Software Development Intern</h2>
+          <div className="pill">04 · Experience</div>
+          <h2 className="section-title mt-3">Work Experience</h2>
+          <p className="section-subtitle">Professional experience and software engineering contributions.</p>
 
-          <div className="card mt-8 p-6 md:p-8">
-            <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
+          <div className="card mt-8 p-6 sm:p-8 lg:p-10">
+            <div className="flex flex-col gap-2 border-b border-slate-100 pb-6 sm:flex-row sm:items-start sm:justify-between">
               <div>
-                <h3 className="text-xl font-bold text-black">
+                <span className="font-mono text-xs uppercase tracking-wider text-indigo-600">Internship</span>
+                <h3 className="mt-1 text-xl font-bold text-slate-900">Software Development Intern</h3>
+                <p className="mt-1 text-sm font-medium text-slate-600">
                   <a
                     href="https://www.websmartindia.com/"
                     target="_blank"
                     rel="noreferrer"
                     className="experience-company-link"
                   >
-                    WebsmartIndia <ExternalLink size={15} />
+                    WebsmartIndia <ExternalLink size={13} />
                   </a>
-                </h3>
-                <p className="mt-1 text-sm font-medium text-black">Software Development Intern</p>
+                </p>
               </div>
-              <span className="text-sm font-medium text-[#374151]">Internship</span>
+              <span className="inline-flex items-center rounded-md border border-slate-200 bg-slate-50 px-3 py-1 font-mono text-xs font-medium text-slate-600">
+                Software Development Intern
+              </span>
             </div>
 
-            <div className="mt-6 border-l border-[#e5e7eb] pl-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#475467]">Project</p>
-              <h4 className="mt-2 text-lg font-semibold text-black">Healthcare Management System</h4>
+            <div className="mt-6 rounded-xl border border-slate-200/70 bg-slate-50/70 p-5">
+              <p className="font-mono text-xs font-semibold uppercase tracking-wider text-slate-500">Project Focus</p>
+              <h4 className="mt-1 text-base font-bold text-slate-900">Healthcare Management System</h4>
+              <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                Developed a healthcare management system that enabled patients to check doctor availability,
+                review doctor ratings, and book appointments through a streamlined and user-friendly workflow.
+                The solution focused on improving healthcare accessibility, scheduling efficiency, and patient experience.
+              </p>
             </div>
-
-            <p className="mt-5 text-sm leading-7 text-[#1f2937]">
-              Developed a healthcare management system that enabled patients to check doctor availability,
-              review doctor ratings, and book appointments through a streamlined and user-friendly workflow.
-              The solution focused on improving healthcare accessibility, scheduling efficiency, and patient experience.
-            </p>
 
             <div className="mt-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#475467]">Key Responsibilities</p>
-              <ul className="mt-3 grid gap-3 text-sm leading-6 text-[#1f2937] md:grid-cols-2">
-                <li>Built doctor availability and appointment booking workflows using Python and Django.</li>
-                <li>Designed responsive interfaces for patient interactions using HTML, CSS, Bootstrap, and JavaScript.</li>
-                <li>Implemented CRUD operations, validation logic, and MySQL integration for doctor and appointment data.</li>
-                <li>Worked with Git and GitHub for version control, debugging, and continuous feature improvement.</li>
+              <p className="font-mono text-xs font-semibold uppercase tracking-wider text-slate-500">Key Responsibilities</p>
+              <ul className="mt-3 grid gap-3 sm:grid-cols-2">
+                {[
+                  "Built doctor availability and appointment booking workflows using Python and Django.",
+                  "Designed responsive interfaces for patient interactions using HTML, CSS, Bootstrap, and JavaScript.",
+                  "Implemented CRUD operations, validation logic, and MySQL integration for doctor and appointment data.",
+                  "Worked with Git and GitHub for version control, debugging, and continuous feature improvement."
+                ].map((resp, i) => (
+                  <li key={i} className="flex items-start gap-2.5 text-sm leading-relaxed text-slate-700">
+                    <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-indigo-600" />
+                    <span>{resp}</span>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
         </div>
       </section>
 
-      <motion.section className="section overflow-hidden pt-0" {...fadeUp(0.08, 0.55)}>
+      {/* Tech Stack Section */}
+      <motion.section className="section" {...fadeUp(0.06, 0.5)}>
         <div className="container">
-          <div className="pill pill-lg">Tech Stack</div>
+          <div className="pill">05 · Tech Stack</div>
           <h2 className="section-title mt-3">Technologies I use to build web solutions</h2>
+          <p className="section-subtitle">Modern languages, frameworks, databases, and developer tools in my workflow.</p>
 
-          <div className="mt-7">
+          <div className="card mt-8 p-6 sm:p-8 lg:p-10">
             <div className="tech-list">
               {[
                 {
@@ -649,15 +725,16 @@ export default function Portfolio() {
         </div>
       </motion.section>
 
-      <motion.section id="contact" className="section pt-0" {...fadeUp(0.08, 0.55)}>
+      {/* Contact Section */}
+      <motion.section id="contact" className="section" {...fadeUp(0.06, 0.5)}>
         <div className="container">
-          <motion.div className="cal-contact-shell" initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }} whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}>
+          <div className="cal-contact-shell">
             <div className={`cal-contact-grid ${contactTab === "schedule" ? "schedule-mode" : ""}`}>
               {contactTab === "message" && (
                 <div className="cal-contact-copy">
-                  <div className="pill pill-lg">Contact</div>
+                  <div className="pill">06 · Contact</div>
                   <h2 className="section-title mt-3">Let&apos;s work together.</h2>
-                  <p className="mt-4 max-w-xl text-sm leading-6 text-[#475467]">
+                  <p className="mt-3 max-w-xl text-sm leading-relaxed text-slate-600">
                     Have a project in mind? Send me an email, tell me what you&apos;re looking to build, or schedule a meeting directly.
                   </p>
 
@@ -666,164 +743,165 @@ export default function Portfolio() {
                     className="cal-contact-email"
                   >
                     <span className="cal-contact-email-icon">
-                      <Mail size={18} />
+                      <Mail size={16} />
                     </span>
                     shvinaysiddhu@gmail.com
                   </a>
 
-                  <div className="mt-6 flex gap-3">
+                  <div className="mt-6 flex items-center gap-2.5">
                     <a
                       href="https://www.linkedin.com/in/vinay-sh-636a71288/"
                       target="_blank"
                       rel="noreferrer"
                       aria-label="LinkedIn"
-                      className="social cal-contact-social"
+                      className="social"
                     >
-                      <Linkedin size={17} />
+                      <Linkedin size={16} />
                     </a>
                     <a
                       href="https://github.com/ShViNaY/"
                       target="_blank"
                       rel="noreferrer"
                       aria-label="GitHub"
-                      className="social cal-contact-social"
+                      className="social"
                     >
-                      <Github size={17} />
+                      <Github size={16} />
                     </a>
                     <a
                       href="https://x.com/24vin_i"
                       target="_blank"
                       rel="noreferrer"
                       aria-label="X"
-                      className="social cal-contact-social"
+                      className="social"
                     >
-                      𝕏
+                      <span className="font-mono text-sm font-bold">𝕏</span>
                     </a>
                   </div>
                 </div>
               )}
 
               <div className={`cal-contact-panel ${contactTab === "schedule" ? "schedule-panel" : ""}`}>
-                {contactTab === "message" && (
-                  <div className="cal-contact-body">
-                    <div className="cal-contact-tabs-inline" role="tablist" aria-label="Contact options">
-                      <button
-                        type="button"
-                        role="tab"
-                        aria-selected={true}
-                        onClick={() => setContactTab("message")}
-                        className={`cal-contact-tab inline active`}
-                      >
-                        Send Message
-                      </button>
-                      <button
-                        type="button"
-                        role="tab"
-                        aria-selected={false}
-                        onClick={() => setContactTab("schedule")}
-                        className={`cal-contact-tab inline`}
-                      >
-                        Schedule Meeting
-                      </button>
-                    </div>
-                    <form className="cal-contact-form" onSubmit={handleContactSubmit}>
-                      <div className="grid gap-4 sm:grid-cols-2">
-                        <input
-                          required
-                          name="name"
-                          placeholder="Your Name"
-                          className="cal-contact-field"
-                          value={contactName}
-                          onChange={(e) => setContactName(e.target.value)}
-                        />
+                <div className="cal-contact-body">
+                  <div className="cal-contact-tabs-inline" role="tablist" aria-label="Contact options">
+                    <button
+                      type="button"
+                      role="tab"
+                      aria-selected={contactTab === "message"}
+                      onClick={() => setContactTab("message")}
+                      className={`cal-contact-tab inline ${contactTab === "message" ? "active" : ""}`}
+                    >
+                      Send Message
+                    </button>
+                    <button
+                      type="button"
+                      role="tab"
+                      aria-selected={contactTab === "schedule"}
+                      onClick={() => setContactTab("schedule")}
+                      className={`cal-contact-tab inline ${contactTab === "schedule" ? "active" : ""}`}
+                    >
+                      Schedule Meeting
+                    </button>
+                  </div>
 
-                        <input
-                          required
-                          type="email"
-                          name="email"
-                          placeholder="Your Email"
-                          className="cal-contact-field"
-                          value={contactEmail}
-                          onChange={(e) => setContactEmail(e.target.value)}
-                        />
+                  {contactTab === "message" && (
+                    <form className="cal-contact-form" onSubmit={handleContactSubmit}>
+                      <div className="grid gap-3 sm:grid-cols-2">
+                        <div>
+                          <label className="mb-1 block font-mono text-[11px] font-semibold text-slate-500 uppercase">
+                            Name
+                          </label>
+                          <input
+                            required
+                            name="name"
+                            placeholder="Your Name"
+                            className="cal-contact-field"
+                            value={contactName}
+                            onChange={(e) => setContactName(e.target.value)}
+                          />
+                        </div>
+
+                        <div>
+                          <label className="mb-1 block font-mono text-[11px] font-semibold text-slate-500 uppercase">
+                            Email
+                          </label>
+                          <input
+                            required
+                            type="email"
+                            name="email"
+                            placeholder="Your Email"
+                            className="cal-contact-field"
+                            value={contactEmail}
+                            onChange={(e) => setContactEmail(e.target.value)}
+                          />
+                        </div>
                       </div>
 
-                      <textarea
-                        required
-                        name="message"
-                        placeholder="Tell me what's on your mind..."
-                        rows={7}
-                        className="cal-contact-field cal-contact-textarea"
-                        value={contactMessage}
-                        onChange={(e) => setContactMessage(e.target.value)}
-                      />
+                      <div>
+                        <label className="mb-1 block font-mono text-[11px] font-semibold text-slate-500 uppercase">
+                          Message
+                        </label>
+                        <textarea
+                          required
+                          name="message"
+                          placeholder="Tell me what you're looking to build..."
+                          rows={6}
+                          className="cal-contact-field cal-contact-textarea"
+                          value={contactMessage}
+                          onChange={(e) => setContactMessage(e.target.value)}
+                        />
+                      </div>
 
                       <div>
                         <button className="btn cal-contact-submit" type="submit" disabled={formStatus === "sending"}>
-                          {formStatus === "sending" ? "Sending..." : "Send Message"} <ArrowRight size={15} />
+                          {formStatus === "sending" ? "Sending..." : "Send Message"} <ArrowRight size={14} />
                         </button>
 
                         {formStatus === "success" && (
-                          <div className="mt-3 text-sm text-emerald-600">Thanks — your message has been sent.</div>
+                          <div className="mt-3 flex items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 p-3 text-xs font-medium text-emerald-800">
+                            <CheckCircle2 size={15} className="text-emerald-600" />
+                            <span>Thanks — your message has been sent successfully.</span>
+                          </div>
                         )}
                         {formStatus === "error" && (
-                          <div className="mt-3 text-sm text-red-600">{formError || "Submission failed."}</div>
+                          <div className="mt-3 rounded-lg border border-red-200 bg-red-50 p-3 text-xs font-medium text-red-700">
+                            {formError || "Submission failed. Please try again."}
+                          </div>
                         )}
                       </div>
                     </form>
-                  </div>
-                )}
+                  )}
 
-                {contactTab === "schedule" && (
-                  <div className="cal-contact-body">
-                    <div className="cal-contact-tabs-inline" role="tablist" aria-label="Contact options">
-                      <button
-                        type="button"
-                        role="tab"
-                        aria-selected={false}
-                        onClick={() => setContactTab("message")}
-                        className={`cal-contact-tab inline`}
-                      >
-                        Send Message
-                      </button>
-                      <button
-                        type="button"
-                        role="tab"
-                        aria-selected={true}
-                        onClick={() => setContactTab("schedule")}
-                        className={`cal-contact-tab inline active`}
-                      >
-                        Schedule Meeting
-                      </button>
+                  {contactTab === "schedule" && (
+                    <div>
+                      <p className="cal-contact-copy-note">
+                        Pick a time that works for you. I&apos;ll send a calendar invite directly to your email.
+                      </p>
+                      <div className="cal-schedule-standalone">
+                        <div className="cal-embed-shell">
+                          <div className="cal-embed-viewport">
+                            <iframe
+                              src="https://cal.com/shvinay/30min?theme=light"
+                              width="100%"
+                              height="860"
+                              frameBorder="0"
+                              title="Cal.com Scheduling"
+                            />
+                          </div>
+                        </div>
+                      </div>
                     </div>
-
-                    <p className="cal-contact-copy-note">Pick a time that works for you. I&apos;ll send a calendar invite to your email.</p>
-
-                    <div className="cal-contact-iframe-placeholder"></div>
-                  </div>
-                )}
-              </div>
-            </div>
-          </motion.div>
-
-          {contactTab === "schedule" && (
-            <div className="cal-schedule-standalone">
-              <div className="cal-embed-shell rounded-xl border border-[#e7e9ef] bg-white p-4">
-                <div className="cal-embed-viewport">
-                  <iframe
-                    src="https://cal.com/shvinay/30min?theme=light"
-                    width="100%"
-                    height="860"
-                    frameBorder="0"
-                    title="Cal.com Scheduling"
-                  />
+                  )}
                 </div>
               </div>
             </div>
-          )}
+          </div>
 
-          <footer className="flex flex-col gap-3 border-t border-[#e7e9ef] py-7 text-xs text-[#667085] sm:flex-row sm:items-center sm:justify-between">
-            <span>© 2026 Vinay S H. All rights reserved.</span>
+          <footer className="mt-12 flex flex-col gap-4 border-t border-slate-200 pt-8 pb-12 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex items-center gap-2">
+              <span className="font-mono text-slate-400">© 2026</span>
+              <span className="font-semibold text-slate-700">Vinay S H</span>
+              <span>— All rights reserved.</span>
+            </div>
             <a href="#home" className="back-to-top">
               <span>Back to top</span>
               <span aria-hidden="true">↑</span>
@@ -849,19 +927,19 @@ function CategoryRow({ index, title, items }: { index: number; title: string; it
     };
 
     check();
-    window.addEventListener('resize', check);
+    window.addEventListener("resize", check);
     // also observe mutations in case content changes (icons load)
     const mo = new MutationObserver(check);
     mo.observe(el, { childList: true, subtree: true });
     return () => {
-      window.removeEventListener('resize', check);
+      window.removeEventListener("resize", check);
       mo.disconnect();
     };
   }, []);
 
   const renderItem = (item: string) => {
     const raw = item.toLowerCase().replace(/\s*\(.*\)/, "");
-  const textOnlyItems = ["responsive web design"];
+    const textOnlyItems = ["responsive web design"];
     if (textOnlyItems.includes(raw)) {
       return (
         <div key={item} className="tech-item-inline">
@@ -880,8 +958,7 @@ function CategoryRow({ index, title, items }: { index: number; title: string; it
     if (raw.includes("jwt")) key = "jwt";
     if (raw.includes("websocket")) key = "websockets";
     const Icon = iconMap[key];
-    const color = techColors[item] ?? techColors[raw] ?? techColors[key] ?? "#667085";
-
+    const color = techColors[item] ?? techColors[raw] ?? techColors[key] ?? "#64748b";
 
     // Prefer local SVG badges for some entries to ensure consistent visuals
     if (key === "javascript") {
@@ -956,7 +1033,6 @@ function CategoryRow({ index, title, items }: { index: number; title: string; it
       );
     }
 
-    // Prefer local SVG badge for CSS3 for consistent brand color
     if (key === "css3") {
       return (
         <div key={item} className="tech-item-inline">
@@ -981,10 +1057,10 @@ function CategoryRow({ index, title, items }: { index: number; title: string; it
   return (
     <motion.div
       className="tech-category"
-      initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
+      initial={prefersReducedMotion ? false : { opacity: 0, y: 14 }}
       whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.25 }}
-      transition={{ duration: 0.45, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.45, delay: index * 0.05, ease: [0.22, 1, 0.36, 1] }}
     >
       <h4 className="tech-column-title">{title}</h4>
       <div ref={rowRef} className="tech-row tech-marquee-shell" id={`tech-row-${index}`}>

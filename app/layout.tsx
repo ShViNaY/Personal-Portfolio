@@ -1,10 +1,21 @@
 import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
-  title: "Vinaysh-portfolio",
+  title: "Vinay S H — Full-Stack Web Developer",
   description:
-    "Portfolio of Vinay S H, a full-stack web developer building responsive websites and web applications.",
+    "Portfolio of Vinay S H, a full-stack web developer building clean, responsive websites and web applications with React, Node.js, and Django.",
   keywords: [
     "Vinay S H",
     "Full Stack Developer",
@@ -23,8 +34,10 @@ export default function RootLayout({
   children
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} scroll-smooth antialiased`}>
+      <body className="min-h-screen bg-[#fcfcfd] font-sans text-slate-900 selection:bg-indigo-100 selection:text-indigo-950">
+        {children}
+      </body>
     </html>
   );
 }
