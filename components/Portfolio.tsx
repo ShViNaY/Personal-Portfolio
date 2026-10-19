@@ -373,7 +373,7 @@ export default function Portfolio() {
 
       {/* Hero Section — Asymmetric Editorial Layout */}
       <motion.section id="home" className="container pt-8 pb-12 md:pt-14 md:pb-16" {...fadeUp(0, 0.5)}>
-        <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
+        <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
           <motion.div
             initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
             animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
@@ -422,13 +422,13 @@ export default function Portfolio() {
               <div className="h-6 w-[1px] bg-[#e5e3dc]" />
               <div>
                 <span className="block font-semibold text-[#121316]">CORE TECH</span>
-                <span className="mt-0.5 block">React • Node • Express • Django</span>
+                <span className="mt-0.5 block">Next.js • React • Node • Express • Django</span>
               </div>
             </div>
           </motion.div>
 
           <motion.div
-            className="flex justify-center lg:justify-end"
+            className="flex items-center justify-center"
             initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.98 }}
             animate={prefersReducedMotion ? undefined : { opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
@@ -459,18 +459,19 @@ export default function Portfolio() {
       {/* About Section — Editorial Split Layout */}
       <motion.section id="about" className="section" {...fadeUp(0.04, 0.5)}>
         <div className="container">
-          <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-            <div>
-              <div className="eyebrow">
-                <span>01</span>
-                <span>/</span>
-                <span>ABOUT ME</span>
-              </div>
-              <h2 className="section-title mt-4">
-                A full-stack developer focused on building practical web solutions.
-              </h2>
-              <div className="mt-8 hidden lg:block">
-                <div className="relative aspect-[4/3] w-full max-w-[340px] overflow-hidden rounded-lg border border-[#e5e3dc] bg-white p-2">
+          <div className="eyebrow">
+            <span>01</span>
+            <span>/</span>
+            <span>ABOUT ME</span>
+          </div>
+          <h2 className="section-title mt-4">
+            A full-stack developer focused on building practical web solutions.
+          </h2>
+
+          <div className="mt-8 grid gap-8 md:gap-10 lg:gap-12 md:grid-cols-[0.85fr_1.15fr] md:items-center">
+            <div className="hidden md:flex md:flex-col justify-center items-center">
+              <div className="w-full max-w-[340px]">
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg border border-[#e5e3dc] bg-white p-2">
                   <div className="relative h-full w-full overflow-hidden rounded">
                     <Image
                       src="/images/About%20Me.png"
@@ -493,7 +494,7 @@ export default function Portfolio() {
               </p>
 
               <p>
-                I work with React, Node.js, Express, Django, JavaScript, Python and
+                I work with Next.js, React, Node.js, Express, Django, JavaScript, Python and
                 relational databases to build websites, web applications and REST APIs.
               </p>
 
@@ -505,8 +506,8 @@ export default function Portfolio() {
                 If you have a project in mind, I&apos;d be happy to discuss it.
               </p>
 
-              <div className="block pt-2 lg:hidden">
-                <div className="relative aspect-[4/3] w-full max-w-[360px] overflow-hidden rounded-lg border border-[#e5e3dc] bg-white p-2">
+              <div className="block pt-2 md:hidden">
+                <div className="relative aspect-[4/3] w-full max-w-[360px] mx-auto overflow-hidden rounded-lg border border-[#e5e3dc] bg-white p-2">
                   <div className="relative h-full w-full overflow-hidden rounded">
                     <Image
                       src="/images/About%20Me.png"
