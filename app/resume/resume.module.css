@@ -1,6 +1,6 @@
 .resumeShell {
   position: relative;
-  padding-top: 1.5rem;
+  padding-top: 2rem;
   padding-bottom: 4rem;
   max-width: 1040px;
   margin: 0 auto;
@@ -11,38 +11,41 @@
   right: 0;
   top: 1.5rem;
   z-index: 30;
-  background: #121316;
-  color: #faf9f5;
-  border: 1px solid #121316;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
+  background: #18181B;
+  color: #FFFFFF;
+  border: 1.5px solid #18181B;
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
   font-size: 13px;
   font-weight: 600;
-  transition: all 180ms ease;
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 4px rgba(24, 24, 27, 0.08);
 }
 
 .downloadBtn:hover {
-  background: #23252a;
-  border-color: #23252a;
+  background: #27272A;
+  border-color: #27272A;
   color: #ffffff;
-  transform: translateY(-1px);
+  transform: translateY(-1.5px);
+  box-shadow: 0 4px 8px rgba(24, 24, 27, 0.12);
 }
 
 @media (max-width: 640px) {
   .downloadBtn {
     right: 0;
     top: 1rem;
-    padding: 0.45rem 0.75rem;
+    padding: 0.45rem 0.85rem;
   }
 }
 
 .iframeWrap {
   margin-top: 4.5rem;
   margin-bottom: 2rem;
-  border-radius: 8px;
+  border-radius: 20px;
   overflow: hidden;
-  border: 1px solid #e5e3dc;
-  background: #ffffff;
+  border: 1.5px solid #18181B;
+  background: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(24, 24, 27, 0.05);
 }
 
 .resumeIframe {
