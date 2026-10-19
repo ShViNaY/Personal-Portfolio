@@ -209,7 +209,7 @@ export default function Portfolio() {
   const closeMenu = () => setMobileOpen(false);
   const navMotion = prefersReducedMotion
     ? {}
-    : { initial: { opacity: 0, y: -12 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] as const } };
+    : { initial: { opacity: 0, y: -10 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] as const } };
   const fadeUp = (delay = 0, duration = 0.5) =>
     prefersReducedMotion
       ? {}
@@ -217,7 +217,7 @@ export default function Portfolio() {
           initial: { opacity: 0, y: 16 },
           whileInView: { opacity: 1, y: 0 },
           viewport: { once: true, amount: 0.15 },
-          transition: { duration, delay, ease: [0.22, 1, 0.36, 1] as const }
+          transition: { duration, delay, ease: [0.16, 1, 0.3, 1] as const }
         };
 
   // Contact tab state
@@ -225,8 +225,8 @@ export default function Portfolio() {
 
   // Projects toggle state
   const [showAllProjects, setShowAllProjects] = useState(false);
-  const visibleProjects = showAllProjects ? projects : projects.slice(0, 2);
-  const hasMoreProjects = projects.length > 2;
+  const visibleProjects = showAllProjects ? projects : projects.slice(0, 3);
+  const hasMoreProjects = projects.length > 3;
 
   // Contact form state (controlled inputs)
   const [contactName, setContactName] = useState("");
@@ -274,42 +274,53 @@ export default function Portfolio() {
   };
 
   return (
-    <main className="min-h-screen">
-      {/* Sticky Header with subtle backdrop blur and hairline border */}
+    <main className="min-h-screen bg-[#faf9f5]">
+      {/* Architectural Minimal Header */}
       <motion.header
         {...navMotion}
-        className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/85 backdrop-blur-md"
+        className="sticky top-0 z-50 border-b border-[#e5e3dc] bg-[#faf9f5]/90 backdrop-blur-md"
       >
-        <div className="container flex h-[68px] items-center justify-between">
-          <a href="#home" className="group flex items-center gap-2.5">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-900 font-mono text-xs font-bold text-white shadow-sm transition-transform group-hover:scale-105">
-              V
+        <div className="container flex h-[64px] items-center justify-between">
+          <a href="#home" className="group flex items-center gap-3">
+            <span className="font-mono text-xs font-bold tracking-tight text-[#121316]">
+              VINAY S H
             </span>
-            <div className="flex flex-col">
-              <span className="text-[15px] font-bold tracking-tight text-slate-900">
-                VINAY SH
-              </span>
-            </div>
+            <span className="hidden h-3.5 w-[1px] bg-[#e5e3dc] sm:inline-block" />
+            <span className="hidden font-mono text-[11px] text-[#717784] sm:inline-block">
+              FULL-STACK DEVELOPER
+            </span>
           </a>
 
-          <nav className="hidden items-center gap-7 md:flex">
-            <a className="nav-link" href="#about">About</a>
-            <a className="nav-link" href="#services">Services</a>
-            <a className="nav-link" href="#projects">Projects</a>
-            <a className="nav-link" href="#experience">Experience</a>
-            <a className="nav-link" href={RESUME_PAGE} target="_blank" rel="noreferrer">Resume</a>
-            <a className="nav-link" href="#contact">Contact</a>
+          <nav className="hidden items-center gap-8 md:flex">
+            <a className="nav-link font-mono text-xs tracking-wider uppercase text-[#717784] hover:text-[#121316]" href="#about">
+              About
+            </a>
+            <a className="nav-link font-mono text-xs tracking-wider uppercase text-[#717784] hover:text-[#121316]" href="#services">
+              Services
+            </a>
+            <a className="nav-link font-mono text-xs tracking-wider uppercase text-[#717784] hover:text-[#121316]" href="#projects">
+              Projects
+            </a>
+            <a className="nav-link font-mono text-xs tracking-wider uppercase text-[#717784] hover:text-[#121316]" href="#experience">
+              Experience
+            </a>
+            <a className="nav-link font-mono text-xs tracking-wider uppercase text-[#717784] hover:text-[#121316]" href={RESUME_PAGE} target="_blank" rel="noreferrer">
+              Resume
+            </a>
+            <a className="nav-link font-mono text-xs tracking-wider uppercase text-[#717784] hover:text-[#121316]" href="#contact">
+              Contact
+            </a>
           </nav>
 
           <div className="hidden items-center gap-3 md:flex">
-            <a href="#contact" className="btn btn-primary text-xs">
-              Work With Me <ArrowRight size={14} />
+            <a href="#contact" className="btn btn-primary text-xs font-mono">
+              Get in touch →
             </a>
           </div>
 
           <button
             aria-label="Open menu"
-            className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-700 transition hover:bg-slate-100 md:hidden"
+            className="inline-flex h-9 w-9 items-center justify-center rounded border border-[#e5e3dc] text-[#121316] hover:bg-[#f2f1ec] md:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
             {mobileOpen ? <X size={18} /> : <Menu size={18} />}
@@ -318,12 +329,12 @@ export default function Portfolio() {
 
         {mobileOpen && (
           <motion.div
-            initial={prefersReducedMotion ? false : { opacity: 0, y: -8 }}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: -6 }}
             animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
-            exit={prefersReducedMotion ? undefined : { opacity: 0, y: -8 }}
-            className="border-t border-slate-200 bg-white shadow-lg md:hidden"
+            exit={prefersReducedMotion ? undefined : { opacity: 0, y: -6 }}
+            className="border-t border-[#e5e3dc] bg-[#faf9f5] shadow-lg md:hidden"
           >
-            <nav className="container flex flex-col py-3">
+            <nav className="container flex flex-col py-4">
               {[
                 ["About", "#about"],
                 ["Services", "#services"],
@@ -335,10 +346,10 @@ export default function Portfolio() {
                   key={label}
                   href={href}
                   onClick={closeMenu}
-                  initial={prefersReducedMotion ? false : { opacity: 0, x: -10 }}
+                  initial={prefersReducedMotion ? false : { opacity: 0, x: -8 }}
                   animate={prefersReducedMotion ? undefined : { opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.04, duration: 0.2 }}
-                  className="border-b border-slate-100 py-3.5 text-sm font-medium text-slate-700 hover:text-slate-950"
+                  className="border-b border-[#e5e3dc]/60 py-3 font-mono text-xs tracking-wider text-[#4a505c] hover:text-[#121316]"
                 >
                   {label}
                 </motion.a>
@@ -348,81 +359,86 @@ export default function Portfolio() {
                 target="_blank"
                 rel="noreferrer"
                 onClick={closeMenu}
-                className="border-b border-slate-100 py-3.5 text-sm font-medium text-slate-700 hover:text-slate-950"
+                className="border-b border-[#e5e3dc]/60 py-3 font-mono text-xs tracking-wider text-[#4a505c] hover:text-[#121316]"
               >
-                Resume
+                Resume ↗
               </a>
-              <a href="#contact" onClick={closeMenu} className="btn btn-primary mt-4 mb-2 text-xs">
-                Work With Me <ArrowRight size={14} />
+              <a href="#contact" onClick={closeMenu} className="btn btn-primary mt-4 mb-2 text-xs font-mono">
+                Get in touch →
               </a>
             </nav>
           </motion.div>
         )}
       </motion.header>
 
-      {/* Hero Section */}
-      <motion.section id="home" className="container pt-8 md:pt-12" {...fadeUp(0, 0.5)}>
-        <div className="overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-[0_1px_3px_rgba(15,23,42,0.03)] lg:grid lg:grid-cols-[1.15fr_0.85fr]">
+      {/* Hero Section — Asymmetric Editorial Layout */}
+      <motion.section id="home" className="container pt-8 pb-12 md:pt-14 md:pb-16" {...fadeUp(0, 0.5)}>
+        <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
           <motion.div
-            className="flex flex-col justify-center p-7 sm:p-10 lg:p-12 xl:p-14"
-            initial={prefersReducedMotion ? false : { opacity: 0, x: -16 }}
-            animate={prefersReducedMotion ? undefined : { opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
+            animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-3">
               <span className="pill-status">
                 <span className="status-dot-pulse">
                   <span />
                   <span />
                 </span>
-                Available for freelance work
+                AVAILABLE FOR WORK
+              </span>
+              <span className="font-mono text-xs text-[#717784]">
+                • BENGALURU, INDIA / REMOTE
               </span>
             </div>
 
-            <h1 className="mt-5 text-[clamp(32px,4.5vw,52px)] font-bold leading-[1.08] tracking-tight text-slate-900">
-              Hi, I&apos;m <span className="text-indigo-600">Vinay.</span>
+            <h1 className="mt-6 text-[clamp(34px,5vw,60px)] font-bold leading-[1.08] tracking-[-0.04em] text-[#121316]">
+              Hi, I&apos;m <span className="underline decoration-[#e5e3dc] decoration-2 underline-offset-8">Vinay.</span>
               <br />
-              <span className="text-slate-800">I build websites &amp; web applications that help businesses grow.</span>
+              <span className="text-[#3a3f4a]">I build websites &amp; web applications that help businesses grow.</span>
             </h1>
 
-            <p className="mt-5 max-w-[520px] text-[15px] sm:text-base leading-relaxed text-slate-600">
-              Full-Stack Web Developer specializing in React, Node.js, Express and Django.
+            <p className="mt-6 max-w-[560px] text-[16px] leading-relaxed text-[#4a505c]">
+              Full-Stack Web Developer specializing in React, Node.js, Express and Django. Focused on building clean, resilient, and practical web solutions.
             </p>
 
-            <motion.div
-              className="mt-8 flex flex-wrap items-center gap-3"
-              initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
-              animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <a href="#projects" className="btn btn-primary text-xs sm:text-sm">
-                View My Work <ArrowRight size={14} />
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <a href="#projects" className="btn btn-primary">
+                View Selected Work <ArrowRight size={14} />
               </a>
-              <a href={RESUME_PAGE} target="_blank" rel="noreferrer" className="btn btn-secondary text-xs sm:text-sm">
+              <a href={RESUME_PAGE} target="_blank" rel="noreferrer" className="btn btn-secondary">
                 View Resume <ExternalLink size={14} />
               </a>
-              <a href="#contact" className="btn btn-secondary text-xs sm:text-sm">
+              <a href="#contact" className="btn btn-outline">
                 Work With Me
               </a>
-            </motion.div>
+            </div>
+
+            <div className="mt-10 flex items-center gap-6 border-t border-[#e5e3dc] pt-5 font-mono text-xs text-[#717784]">
+              <div>
+                <span className="block font-semibold text-[#121316]">FOCUS</span>
+                <span className="mt-0.5 block">Full-Stack / Frontend / APIs</span>
+              </div>
+              <div className="h-6 w-[1px] bg-[#e5e3dc]" />
+              <div>
+                <span className="block font-semibold text-[#121316]">CORE TECH</span>
+                <span className="mt-0.5 block">React • Node • Express • Django</span>
+              </div>
+            </div>
           </motion.div>
 
           <motion.div
-            className="relative flex min-h-[320px] items-center justify-center border-t border-slate-100 bg-[#f8fafc] p-6 lg:min-h-full lg:border-l lg:border-t-0 lg:p-10"
+            className="flex justify-center lg:justify-end"
             initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.98 }}
             animate={prefersReducedMotion ? undefined : { opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="relative w-full max-w-[440px] overflow-hidden rounded-xl border border-slate-200/90 bg-white p-2 shadow-sm">
-              <div className="flex items-center justify-between border-b border-slate-100 px-3 py-2">
-                <div className="flex items-center gap-1.5">
-                  <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
-                </div>
-                <span className="font-mono text-[11px] text-slate-400">vinay.workspace</span>
+            <div className="w-full max-w-[440px] rounded-lg border border-[#e5e3dc] bg-white p-3 shadow-sm">
+              <div className="flex items-center justify-between border-b border-[#e5e3dc] pb-2 font-mono text-[11px] text-[#717784]">
+                <span>WORKSPACE</span>
+                <span>ARCHITECT</span>
               </div>
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-slate-50">
+              <div className="relative mt-2 aspect-[4/3] w-full overflow-hidden rounded bg-[#f2f1ec]">
                 <Image
                   src="/images/anime-developer.svg"
                   alt="Anime-style developer working at a desk"
@@ -431,46 +447,67 @@ export default function Portfolio() {
                   className="object-cover"
                 />
               </div>
+              <div className="mt-2.5 flex items-center justify-between font-mono text-[10px] text-[#717784]">
+                <span>VINAY S H</span>
+                <span>PORTFOLIO / 2026</span>
+              </div>
             </div>
           </motion.div>
         </div>
       </motion.section>
 
-      {/* About Section */}
-      <motion.section id="about" className="section" {...fadeUp(0.05, 0.5)}>
+      {/* About Section — Editorial Split Layout */}
+      <motion.section id="about" className="section" {...fadeUp(0.04, 0.5)}>
         <div className="container">
-          <div className="card overflow-hidden p-7 sm:p-10 lg:p-12">
-            <div className="grid gap-10 lg:grid-cols-[1.25fr_1fr] lg:items-center">
-              <div>
-                <div className="pill">01 · About Me</div>
-                <h2 className="section-title mt-4">
-                  A full-stack developer focused on building practical web solutions.
-                </h2>
-
-                <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-slate-600">
-                  <p>
-                    I&apos;m a full-stack web developer focused on building clean,
-                    responsive and practical web solutions.
-                  </p>
-
-                  <p>
-                    I work with React, Node.js, Express, Django, JavaScript, Python and
-                    relational databases to build websites, web applications and REST APIs.
-                  </p>
-
-                  <div className="about-highlight text-slate-800">
-                    I enjoy taking an idea or requirement and turning it into a working product from frontend development and backend logic to database integration and deployment.
+          <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+            <div>
+              <div className="eyebrow">
+                <span>01</span>
+                <span>/</span>
+                <span>ABOUT ME</span>
+              </div>
+              <h2 className="section-title mt-4">
+                A full-stack developer focused on building practical web solutions.
+              </h2>
+              <div className="mt-8 hidden lg:block">
+                <div className="relative aspect-[4/3] w-full max-w-[340px] overflow-hidden rounded-lg border border-[#e5e3dc] bg-white p-2">
+                  <div className="relative h-full w-full overflow-hidden rounded">
+                    <Image
+                      src="/images/About%20Me.png"
+                      alt="About Me illustration"
+                      fill
+                      className="object-cover"
+                    />
                   </div>
-
-                  <p>
-                    If you have a project in mind, I&apos;d be happy to discuss it.
-                  </p>
                 </div>
+                <p className="mt-2 font-mono text-[11px] text-[#717784]">
+                  [ ARTIFACT 01 · ABOUT THE DEVELOPER ]
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-6 text-[16px] leading-relaxed text-[#4a505c]">
+              <p className="text-lg font-medium text-[#121316]">
+                I&apos;m a full-stack web developer focused on building clean,
+                responsive and practical web solutions.
+              </p>
+
+              <p>
+                I work with React, Node.js, Express, Django, JavaScript, Python and
+                relational databases to build websites, web applications and REST APIs.
+              </p>
+
+              <div className="border-l-2 border-[#121316] bg-[#f2f1ec] p-5 font-sans text-[15px] font-medium leading-relaxed text-[#121316]">
+                I enjoy taking an idea or requirement and turning it into a working product from frontend development and backend logic to database integration and deployment.
               </div>
 
-              <div className="flex items-center justify-center lg:justify-end">
-                <div className="relative w-full max-w-[400px] overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 p-2 shadow-sm">
-                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl">
+              <p>
+                If you have a project in mind, I&apos;d be happy to discuss it.
+              </p>
+
+              <div className="block pt-2 lg:hidden">
+                <div className="relative aspect-[4/3] w-full max-w-[360px] overflow-hidden rounded-lg border border-[#e5e3dc] bg-white p-2">
+                  <div className="relative h-full w-full overflow-hidden rounded">
                     <Image
                       src="/images/About%20Me.png"
                       alt="About Me illustration"
@@ -485,120 +522,201 @@ export default function Portfolio() {
         </div>
       </motion.section>
 
-      {/* Services Section */}
-      <motion.section id="services" className="section" {...fadeUp(0.06, 0.5)}>
+      {/* Services Section — Architectural Numbered Rows */}
+      <motion.section id="services" className="section" {...fadeUp(0.04, 0.5)}>
         <div className="container">
-          <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
+          <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
             <div>
-              <div className="pill">02 · Services</div>
+              <div className="eyebrow">
+                <span>02</span>
+                <span>/</span>
+                <span>SERVICES</span>
+              </div>
               <h2 className="section-title mt-3">What I can help you with</h2>
               <p className="section-subtitle">Focused development services for practical web projects.</p>
             </div>
           </div>
 
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8">
             {services.map(({ icon: Icon, title, description }, index) => (
               <motion.div
                 key={title}
-                className="group relative flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-slate-300 hover:shadow-md"
-                initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
+                className="service-row"
+                initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
                 whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.45, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.4, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div>
-                  <div className="flex items-center justify-between">
-                    <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 transition-colors group-hover:bg-indigo-600 group-hover:text-white">
-                      <Icon size={20} />
-                    </span>
-                    <span className="font-mono text-xs font-semibold text-slate-400">
-                      0{index + 1}
-                    </span>
-                  </div>
-                  <h3 className="mt-5 text-base font-bold text-slate-900">{title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{description}</p>
+                <div className="font-mono text-sm font-semibold text-[#717784]">
+                  0{index + 1} /
                 </div>
+                <div className="flex items-center gap-3">
+                  <span className="flex h-8 w-8 items-center justify-center rounded border border-[#e5e3dc] bg-white text-[#121316]">
+                    <Icon size={16} />
+                  </span>
+                  <h3 className="text-lg font-bold text-[#121316]">{title}</h3>
+                </div>
+                <p className="service-row-desc text-sm leading-relaxed text-[#4a505c]">
+                  {description}
+                </p>
               </motion.div>
             ))}
           </div>
         </div>
       </motion.section>
 
-      {/* Projects Section */}
-      <motion.section id="projects" className="section" {...fadeUp(0.06, 0.5)}>
+      {/* Projects Section — Editorial Showcase */}
+      <motion.section id="projects" className="section" {...fadeUp(0.04, 0.5)}>
         <div className="container">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <div className="pill">03 · Projects</div>
-              <h2 className="section-title mt-3">Some things I&apos;ve built</h2>
+              <div className="eyebrow">
+                <span>03</span>
+                <span>/</span>
+                <span>PROJECTS</span>
+              </div>
+              <h2 className="section-title mt-3">Selected Work</h2>
               <p className="section-subtitle">Real projects demonstrating my development work.</p>
             </div>
             <a
               href="https://github.com/ShViNaY/"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1.5 font-mono text-xs font-semibold text-indigo-600 hover:text-indigo-700 hover:underline"
+              className="inline-flex items-center gap-1 font-mono text-xs font-semibold text-[#121316] hover:underline"
             >
               View all on GitHub <ArrowRight size={13} />
             </a>
           </div>
 
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
-            {visibleProjects.map((project, index) => (
-              <motion.article
-                key={project.title}
-                className="card group overflow-hidden"
-                initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
-                whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.15 }}
-                transition={{ duration: 0.45, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <div className="relative aspect-[16/9] w-full overflow-hidden border-b border-slate-100 bg-slate-100">
+          {/* Featured Project 01 — ReportPilot */}
+          <div className="mt-8">
+            <motion.div
+              className="group overflow-hidden rounded-xl border border-[#e5e3dc] bg-white transition hover:border-[#cfcdca]"
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
+              whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <div className="grid lg:grid-cols-[1.3fr_0.9fr]">
+                <div className="relative aspect-[16/10] overflow-hidden border-b border-[#e5e3dc] bg-[#f2f1ec] lg:border-b-0 lg:border-r">
                   <Image
-                    src={project.image}
-                    alt={`${project.title} preview`}
+                    src={projects[0].image}
+                    alt={`${projects[0].title} preview`}
                     fill
-                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
                   />
-                  <div className="absolute top-3 left-3">
-                    <span className="rounded-md border border-slate-200/80 bg-white/95 px-2.5 py-1 font-mono text-[11px] font-semibold text-slate-700 shadow-sm backdrop-blur-sm">
-                      0{index + 1}
+                  <div className="absolute top-4 left-4">
+                    <span className="rounded border border-[#e5e3dc] bg-[#faf9f5]/90 px-2.5 py-1 font-mono text-[11px] font-bold text-[#121316] backdrop-blur-sm">
+                      FEATURED · 01
                     </span>
                   </div>
                 </div>
 
-                <div className="p-6">
-                  <h3 className="text-lg font-bold tracking-tight text-slate-900">{project.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{project.description}</p>
+                <div className="flex flex-col justify-between p-8 sm:p-10">
+                  <div>
+                    <span className="font-mono text-xs uppercase tracking-wider text-[#717784]">
+                      SaaS / Analytics Platform
+                    </span>
+                    <h3 className="mt-2 text-2xl font-bold tracking-tight text-[#121316]">
+                      {projects[0].title}
+                    </h3>
+                    <p className="mt-4 text-sm leading-relaxed text-[#4a505c]">
+                      {projects[0].description}
+                    </p>
 
-                  <div className="mt-4 flex flex-wrap gap-1.5">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-md border border-slate-200/80 bg-slate-50 px-2.5 py-0.5 font-mono text-[11px] font-medium text-slate-600"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                    <div className="mt-6 flex flex-wrap gap-1.5">
+                      {projects[0].tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded border border-[#e5e3dc] bg-[#faf9f5] px-2.5 py-1 font-mono text-[11px] text-[#4a505c]"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
 
-                  <div className="mt-6 flex items-center gap-3 border-t border-slate-100 pt-5">
-                    {project.live ? (
-                      <a className="btn btn-primary text-xs" href={project.live} target="_blank" rel="noreferrer">
+                  <div className="mt-8 flex items-center gap-3 border-t border-[#e5e3dc] pt-6">
+                    {projects[0].live && (
+                      <a className="btn btn-primary text-xs" href={projects[0].live} target="_blank" rel="noreferrer">
                         Live Demo <ExternalLink size={13} />
                       </a>
-                    ) : (
-                      <span className="btn cursor-default bg-slate-50 text-slate-400 border-slate-200 text-xs">
-                        Live Demo — Coming Soon
-                      </span>
                     )}
-                    <a className="btn btn-secondary text-xs" href={project.github} target="_blank" rel="noreferrer">
+                    <a className="btn btn-secondary text-xs" href={projects[0].github} target="_blank" rel="noreferrer">
                       GitHub <Github size={13} />
                     </a>
                   </div>
                 </div>
-              </motion.article>
-            ))}
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Subsequent Projects — 2-Column Grid */}
+          <div className="mt-6 grid gap-6 md:grid-cols-2">
+            {visibleProjects.slice(1).map((project, idx) => {
+              const projectNumber = idx + 2;
+              return (
+                <motion.article
+                  key={project.title}
+                  className="group flex flex-col justify-between overflow-hidden rounded-xl border border-[#e5e3dc] bg-white transition hover:border-[#cfcdca]"
+                  initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
+                  whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.15 }}
+                  transition={{ duration: 0.45, delay: idx * 0.05, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <div className="relative aspect-[16/9] w-full overflow-hidden border-b border-[#e5e3dc] bg-[#f2f1ec]">
+                    <Image
+                      src={project.image}
+                      alt={`${project.title} preview`}
+                      fill
+                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+                    />
+                    <div className="absolute top-3 left-3">
+                      <span className="rounded border border-[#e5e3dc] bg-[#faf9f5]/90 px-2 py-0.5 font-mono text-[11px] font-semibold text-[#121316] backdrop-blur-sm">
+                        0{projectNumber}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-1 flex-col justify-between p-6 sm:p-7">
+                    <div>
+                      <h3 className="text-xl font-bold tracking-tight text-[#121316]">
+                        {project.title}
+                      </h3>
+                      <p className="mt-3 text-sm leading-relaxed text-[#4a505c]">
+                        {project.description}
+                      </p>
+
+                      <div className="mt-5 flex flex-wrap gap-1.5">
+                        {project.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="rounded border border-[#e5e3dc] bg-[#faf9f5] px-2.5 py-0.5 font-mono text-[11px] text-[#4a505c]"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="mt-8 flex items-center gap-3 border-t border-[#e5e3dc] pt-5">
+                      {project.live ? (
+                        <a className="btn btn-primary text-xs" href={project.live} target="_blank" rel="noreferrer">
+                          Live Demo <ExternalLink size={13} />
+                        </a>
+                      ) : (
+                        <span className="btn cursor-default bg-[#f2f1ec] text-[#717784] border-[#e5e3dc] text-xs">
+                          Live Demo — Coming Soon
+                        </span>
+                      )}
+                      <a className="btn btn-secondary text-xs" href={project.github} target="_blank" rel="noreferrer">
+                        GitHub <Github size={13} />
+                      </a>
+                    </div>
+                  </div>
+                </motion.article>
+              );
+            })}
           </div>
 
           {hasMoreProjects && (
@@ -606,7 +724,7 @@ export default function Portfolio() {
               <button
                 type="button"
                 onClick={() => setShowAllProjects((prev) => !prev)}
-                className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2.5 font-mono text-xs font-semibold text-slate-800 shadow-sm transition hover:border-slate-300 hover:bg-slate-50"
+                className="btn btn-secondary font-mono text-xs"
               >
                 {showAllProjects ? (
                   <>
@@ -625,19 +743,27 @@ export default function Portfolio() {
         </div>
       </motion.section>
 
-      {/* Experience Section */}
+      {/* Experience Section — Architectural Ledger */}
       <section id="experience" className="section">
         <div className="container">
-          <div className="pill">04 · Experience</div>
+          <div className="eyebrow">
+            <span>04</span>
+            <span>/</span>
+            <span>EXPERIENCE</span>
+          </div>
           <h2 className="section-title mt-3">Work Experience</h2>
           <p className="section-subtitle">Professional experience and software engineering contributions.</p>
 
-          <div className="card mt-8 p-6 sm:p-8 lg:p-10">
-            <div className="flex flex-col gap-2 border-b border-slate-100 pb-6 sm:flex-row sm:items-start sm:justify-between">
+          <div className="mt-6 rounded-xl border border-[#e5e3dc] bg-white p-6 sm:p-8">
+            <div className="flex flex-col gap-2 border-b border-[#e5e3dc] pb-5 sm:flex-row sm:items-start sm:justify-between">
               <div>
-                <span className="font-mono text-xs uppercase tracking-wider text-indigo-600">Internship</span>
-                <h3 className="mt-1 text-xl font-bold text-slate-900">Software Development Intern</h3>
-                <p className="mt-1 text-sm font-medium text-slate-600">
+                <span className="font-mono text-xs uppercase tracking-wider text-[#1d4ed8]">
+                  [ INTERNSHIP ]
+                </span>
+                <h3 className="mt-1 text-2xl font-bold text-[#121316]">
+                  Software Development Intern
+                </h3>
+                <p className="mt-1 text-sm font-medium text-[#4a505c]">
                   <a
                     href="https://www.websmartindia.com/"
                     target="_blank"
@@ -648,15 +774,19 @@ export default function Portfolio() {
                   </a>
                 </p>
               </div>
-              <span className="inline-flex items-center rounded-md border border-slate-200 bg-slate-50 px-3 py-1 font-mono text-xs font-medium text-slate-600">
+              <span className="inline-flex items-center rounded border border-[#e5e3dc] bg-[#f2f1ec] px-3 py-1 font-mono text-xs font-semibold text-[#121316]">
                 Software Development Intern
               </span>
             </div>
 
-            <div className="mt-6 rounded-xl border border-slate-200/70 bg-slate-50/70 p-5">
-              <p className="font-mono text-xs font-semibold uppercase tracking-wider text-slate-500">Project Focus</p>
-              <h4 className="mt-1 text-base font-bold text-slate-900">Healthcare Management System</h4>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">
+            <div className="mt-6 rounded-lg border border-[#e5e3dc] bg-[#faf9f5] p-5">
+              <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#717784]">
+                PROJECT
+              </span>
+              <h4 className="mt-1 text-lg font-bold text-[#121316]">
+                Healthcare Management System
+              </h4>
+              <p className="mt-2 text-sm leading-relaxed text-[#4a505c]">
                 Developed a healthcare management system that enabled patients to check doctor availability,
                 review doctor ratings, and book appointments through a streamlined and user-friendly workflow.
                 The solution focused on improving healthcare accessibility, scheduling efficiency, and patient experience.
@@ -664,7 +794,9 @@ export default function Portfolio() {
             </div>
 
             <div className="mt-6">
-              <p className="font-mono text-xs font-semibold uppercase tracking-wider text-slate-500">Key Responsibilities</p>
+              <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#717784]">
+                KEY RESPONSIBILITIES
+              </span>
               <ul className="mt-3 grid gap-3 sm:grid-cols-2">
                 {[
                   "Built doctor availability and appointment booking workflows using Python and Django.",
@@ -672,8 +804,8 @@ export default function Portfolio() {
                   "Implemented CRUD operations, validation logic, and MySQL integration for doctor and appointment data.",
                   "Worked with Git and GitHub for version control, debugging, and continuous feature improvement."
                 ].map((resp, i) => (
-                  <li key={i} className="flex items-start gap-2.5 text-sm leading-relaxed text-slate-700">
-                    <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-indigo-600" />
+                  <li key={i} className="flex items-start gap-3 text-sm leading-relaxed text-[#3a3f4a]">
+                    <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#121316]" />
                     <span>{resp}</span>
                   </li>
                 ))}
@@ -683,14 +815,18 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* Tech Stack Section */}
-      <motion.section className="section" {...fadeUp(0.06, 0.5)}>
+      {/* Tech Stack Section — Technical Matrix */}
+      <motion.section className="section" {...fadeUp(0.04, 0.5)}>
         <div className="container">
-          <div className="pill">05 · Tech Stack</div>
+          <div className="eyebrow">
+            <span>05</span>
+            <span>/</span>
+            <span>TECH STACK</span>
+          </div>
           <h2 className="section-title mt-3">Technologies I use to build web solutions</h2>
-          <p className="section-subtitle">Modern languages, frameworks, databases, and developer tools in my workflow.</p>
+          <p className="section-subtitle">Languages, frameworks, databases, and developer tools in my workflow.</p>
 
-          <div className="card mt-8 p-6 sm:p-8 lg:p-10">
+          <div className="mt-6 rounded-xl border border-[#e5e3dc] bg-white p-6 sm:p-8">
             <div className="tech-list">
               {[
                 {
@@ -725,16 +861,20 @@ export default function Portfolio() {
         </div>
       </motion.section>
 
-      {/* Contact Section */}
-      <motion.section id="contact" className="section" {...fadeUp(0.06, 0.5)}>
+      {/* Contact & Meeting Section — Split Editorial */}
+      <motion.section id="contact" className="section" {...fadeUp(0.04, 0.5)}>
         <div className="container">
           <div className="cal-contact-shell">
             <div className={`cal-contact-grid ${contactTab === "schedule" ? "schedule-mode" : ""}`}>
               {contactTab === "message" && (
                 <div className="cal-contact-copy">
-                  <div className="pill">06 · Contact</div>
+                  <div className="eyebrow">
+                    <span>06</span>
+                    <span>/</span>
+                    <span>CONTACT</span>
+                  </div>
                   <h2 className="section-title mt-3">Let&apos;s work together.</h2>
-                  <p className="mt-3 max-w-xl text-sm leading-relaxed text-slate-600">
+                  <p className="mt-4 max-w-xl text-sm leading-relaxed text-[#4a505c]">
                     Have a project in mind? Send me an email, tell me what you&apos;re looking to build, or schedule a meeting directly.
                   </p>
 
@@ -742,13 +882,11 @@ export default function Portfolio() {
                     href="mailto:shvinaysiddhu@gmail.com"
                     className="cal-contact-email"
                   >
-                    <span className="cal-contact-email-icon">
-                      <Mail size={16} />
-                    </span>
-                    shvinaysiddhu@gmail.com
+                    <Mail size={15} />
+                    <span>shvinaysiddhu@gmail.com</span>
                   </a>
 
-                  <div className="mt-6 flex items-center gap-2.5">
+                  <div className="mt-8 flex items-center gap-3">
                     <a
                       href="https://www.linkedin.com/in/vinay-sh-636a71288/"
                       target="_blank"
@@ -807,13 +945,13 @@ export default function Portfolio() {
                     <form className="cal-contact-form" onSubmit={handleContactSubmit}>
                       <div className="grid gap-3 sm:grid-cols-2">
                         <div>
-                          <label className="mb-1 block font-mono text-[11px] font-semibold text-slate-500 uppercase">
-                            Name
+                          <label className="mb-1 block font-mono text-[10px] font-semibold uppercase tracking-wider text-[#717784]">
+                            Your Name
                           </label>
                           <input
                             required
                             name="name"
-                            placeholder="Your Name"
+                            placeholder="Alex Morgan"
                             className="cal-contact-field"
                             value={contactName}
                             onChange={(e) => setContactName(e.target.value)}
@@ -821,14 +959,14 @@ export default function Portfolio() {
                         </div>
 
                         <div>
-                          <label className="mb-1 block font-mono text-[11px] font-semibold text-slate-500 uppercase">
-                            Email
+                          <label className="mb-1 block font-mono text-[10px] font-semibold uppercase tracking-wider text-[#717784]">
+                            Your Email
                           </label>
                           <input
                             required
                             type="email"
                             name="email"
-                            placeholder="Your Email"
+                            placeholder="alex@company.com"
                             className="cal-contact-field"
                             value={contactEmail}
                             onChange={(e) => setContactEmail(e.target.value)}
@@ -837,14 +975,14 @@ export default function Portfolio() {
                       </div>
 
                       <div>
-                        <label className="mb-1 block font-mono text-[11px] font-semibold text-slate-500 uppercase">
-                          Message
+                        <label className="mb-1 block font-mono text-[10px] font-semibold uppercase tracking-wider text-[#717784]">
+                          Your Message
                         </label>
                         <textarea
                           required
                           name="message"
                           placeholder="Tell me what you're looking to build..."
-                          rows={6}
+                          rows={5}
                           className="cal-contact-field cal-contact-textarea"
                           value={contactMessage}
                           onChange={(e) => setContactMessage(e.target.value)}
@@ -853,17 +991,17 @@ export default function Portfolio() {
 
                       <div>
                         <button className="btn cal-contact-submit" type="submit" disabled={formStatus === "sending"}>
-                          {formStatus === "sending" ? "Sending..." : "Send Message"} <ArrowRight size={14} />
+                          {formStatus === "sending" ? "Sending..." : "Send Message →"}
                         </button>
 
                         {formStatus === "success" && (
-                          <div className="mt-3 flex items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 p-3 text-xs font-medium text-emerald-800">
+                          <div className="mt-3 flex items-center gap-2 rounded border border-emerald-200 bg-emerald-50 p-3 text-xs font-medium text-emerald-800">
                             <CheckCircle2 size={15} className="text-emerald-600" />
                             <span>Thanks — your message has been sent successfully.</span>
                           </div>
                         )}
                         {formStatus === "error" && (
-                          <div className="mt-3 rounded-lg border border-red-200 bg-red-50 p-3 text-xs font-medium text-red-700">
+                          <div className="mt-3 rounded border border-red-200 bg-red-50 p-3 text-xs font-medium text-red-700">
                             {formError || "Submission failed. Please try again."}
                           </div>
                         )}
@@ -896,11 +1034,11 @@ export default function Portfolio() {
             </div>
           </div>
 
-          <footer className="mt-12 flex flex-col gap-4 border-t border-slate-200 pt-8 pb-12 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex items-center gap-2">
-              <span className="font-mono text-slate-400">© 2026</span>
-              <span className="font-semibold text-slate-700">Vinay S H</span>
-              <span>— All rights reserved.</span>
+          <footer className="mt-10 flex flex-col gap-4 border-t border-[#e5e3dc] pt-6 pb-12 text-xs text-[#717784] sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex items-center gap-2 font-mono text-[11px]">
+              <span>© 2026 VINAY S H</span>
+              <span>—</span>
+              <span>BENGALURU, INDIA</span>
             </div>
             <a href="#home" className="back-to-top">
               <span>Back to top</span>
@@ -958,7 +1096,7 @@ function CategoryRow({ index, title, items }: { index: number; title: string; it
     if (raw.includes("jwt")) key = "jwt";
     if (raw.includes("websocket")) key = "websockets";
     const Icon = iconMap[key];
-    const color = techColors[item] ?? techColors[raw] ?? techColors[key] ?? "#64748b";
+    const color = techColors[item] ?? techColors[raw] ?? techColors[key] ?? "#717784";
 
     // Prefer local SVG badges for some entries to ensure consistent visuals
     if (key === "javascript") {
@@ -1057,10 +1195,10 @@ function CategoryRow({ index, title, items }: { index: number; title: string; it
   return (
     <motion.div
       className="tech-category"
-      initial={prefersReducedMotion ? false : { opacity: 0, y: 14 }}
+      initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
       whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.45, delay: index * 0.05, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.45, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
     >
       <h4 className="tech-column-title">{title}</h4>
       <div ref={rowRef} className="tech-row tech-marquee-shell" id={`tech-row-${index}`}>

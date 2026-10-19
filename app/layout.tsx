@@ -35,7 +35,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} scroll-smooth antialiased`}>
-      <body className="min-h-screen bg-[#fcfcfd] font-sans text-slate-900 selection:bg-indigo-100 selection:text-indigo-950">
+      <body className="min-h-screen bg-[#faf9f5] font-sans text-[#121316] selection:bg-[#121316] selection:text-[#faf9f5]">
         {children}
       </body>
     </html>

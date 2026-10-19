@@ -12,20 +12,25 @@ const config: Config = {
         mono: ["var(--font-geist-mono)", "ui-monospace", "monospace"]
       },
       colors: {
-        accent: {
-          DEFAULT: "#4f46e5",
-          hover: "#4338ca",
-          soft: "#eef2ff"
+        canvas: {
+          DEFAULT: "#faf9f5",
+          subtle: "#f2f1ec",
+          muted: "#eceae3"
         },
         ink: {
-          DEFAULT: "#0f172a",
-          secondary: "#334155",
-          muted: "#64748b"
+          DEFAULT: "#121316",
+          secondary: "#4a505c",
+          muted: "#717784",
+          faint: "#9ba1af"
         },
-        surface: {
-          DEFAULT: "#ffffff",
-          subtle: "#f8fafc",
-          hover: "#f1f5f9"
+        line: {
+          DEFAULT: "#e5e3dc",
+          subtle: "#eeece6"
+        },
+        accent: {
+          DEFAULT: "#1d4ed8",
+          hover: "#1e40af",
+          soft: "#eff4fe"
         }
       }
     }
